@@ -1,0 +1,802 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage{caption}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{url}
+\linespread{1.4}
+\usepackage{geometry}
+\usepackage{float}
+\geometry{
+a4paper,
+total={210mm,297mm},
+left=1.25in,
+right=0.75in,
+top=0.75in,
+bottom=0.75in,
+}
+
+\begin{document}
+\pagestyle{empty}
+\begin{center}
+{\large \textbf{VISVESVARAYA TECHNOLOGICAL UNIVERSITY}}
+\par
+\vspace{3pt}
+{\large \textbf{``JNANA SANGAMA'', BELAGAVI - 590 018}}
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=0.9in,height=1.0in]{../fig/vtu}
+\end{figure}
+\\
+\textbf{PROJECT PHASE - II REPORT}
+\par
+\textbf{on}
+\par
+\vspace{3pt}
+{\Large \textbf{``Leveraging Blockchain for secure law enforcement and government records.''}}
+\par
+\vspace{3pt}
+\textit{\textbf{Submitted by}}  
+\vspace{12pt}
+
+\begin{tabular}{@{} l @{\hspace{3cm}} l @{}}
+\textbf{\large Himanshu S Shetty} & \textbf{\large 4SF22CS078} \\
+\textbf{\large M Imaad Iqbal} & \textbf{\large 4SF22CS111} \\
+\textbf{\large Pratheek G Shetty} & \textbf{\large 4SF22CS148} \\
+\textbf{\large Shifali Florine Lobo} & \textbf{\large 4SF22CS192} \\
+\end{tabular}
+
+\vspace{3pt}
+\textit{\textbf{In partial fulfillment of the requirements for the VI semester }}
+\par
+\vspace{1pt}
+\large \textbf{BACHELOR OF ENGINEERING }
+\par
+\vspace{1pt}
+\textbf{in}
+\par
+\vspace{1pt}
+\large \textbf{COMPUTER SCIENCE \& ENGINEERING}
+\par
+\vspace{1pt}
+\textit{\textbf{Under the Guidance of}}
+\par
+\vspace{1pt}
+\textbf{Dr. Mustafa Basthikodi}
+\par
+%\vspace{0.5pt}
+\textbf{\centering \begin{normalsize}
+HOD, Department of CSE
+\end{normalsize} }
+\par
+\vspace{0.5pt}
+\small \centering \textbf{at}\\
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=1.25in,height=1.0in]{../fig/sahyadri}
+\end{figure}
+{\Large \textbf{SAHYADRI}}
+\par
+\vspace{6pt}
+{\large \textbf{College of Engineering \& Management}}
+\par
+\vspace{3pt}
+{\large \textbf{An Autonomous Institution }}
+\par
+\vspace{3pt}
+{\large \textbf{MANGALURU}}
+\par
+\vspace{3pt}
+{\large \textbf{2024 - 25}}
+
+\newpage
+
+{\LARGE \textbf{SAHYADRI}}
+\par
+\vspace{6pt}
+{\Large \textbf{College of Engineering \& Management}}
+\par
+\vspace{3pt}
+{\large \textbf{Adyar, Mangaluru - 575 007}}
+\par
+\vspace{0.25in}
+{\large \textbf{Department of Computer Science \& Engineering}}
+\par
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=1.25in,height=1in]{../fig/sahyadri}
+\end{figure}
+{\Large \textbf{CERTIFICATE}}
+\end{center}
+\par
+\vspace{0.10in}
+\setstretch{1.5}
+\noindent This is to certify that the phase - I work of project entitled \textbf{`` Leveraging Blockchain for secure law enforcement and government records.''}  has been carried out by \textbf{ Himanshu S Shetty (4SF22CS078),M Imaad Iqbal (4SF22CS111), Pratheek G Shetty (4SF22CS148)  and Shifali Florine Lobo (4SF22CS192)}, the bonafide students of Sahyadri College of Engineering and Management in partial fulfillment of the requirements for the VI semester of Bachelor of Engineering in Computer Science and Engineering of Visvesvaraya Technological University, Belagavi during the year  2024 - 25. It is certified that all suggestions indicated for Internal Assessment have been incorporated in the Report deposited in the departmental library. The project report has been approved as it satisfies the academic requirements in respect of project work prescribed for the said degree.
+
+\par
+\vspace{0.95in}
+\setstretch{1.15}
+
+\begin{center}
+\begin{minipage}[t]{0.3\textwidth}
+  \centering
+  \rule{4cm}{0.4pt} \\[6pt]  % shorter signature line centered
+  \textbf{Project Coordinator} \\[6pt]
+  Dr. Suhas A Bhyratae \\[4pt]
+  Associate Professor \\[4pt]
+  Dept. of CSE
+\end{minipage}
+\hspace{0.35\textwidth}  % gap between blocks
+\begin{minipage}[t]{0.3\textwidth}
+  \centering
+  \rule{4cm}{0.4pt} \\[6pt]  % shorter signature line centered
+  \textbf{HOD \& Project Guide} \\[6pt]
+  Dr. Mustafa Basthikodi \\[4pt]
+  Professor \& Head \\[4pt]
+  Dept. of CSE
+\end{minipage}
+\end{center}
+
+
+
+
+\newpage
+\begin{center}
+{\LARGE \textbf{SAHYADRI}}
+\par
+\vspace{6pt}
+{\Large \textbf{College of Engineering \& Management}}
+\par
+\vspace{3pt}
+{\large \textbf{Adyar, Mangaluru - 575 007}}
+\par
+\vspace{0.25in}
+{\large \textbf{Department of Computer Science \& Engineering}}
+\par
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=1.25in,height=1in]{../fig/sahyadri}
+\end{figure}
+{\Large \textbf{DECLARATION}} 
+\end{center}
+\par
+\vspace{0.10in}
+\setstretch{1.5}
+\noindent We hereby declare that the entire work embodied in this Project Phase - I Report titled
+\textbf{``Leveraging Blockchain for secure law enforcement and government records''} has been carried out by us at Sahyadri College of Engineering and Management, Mangaluru under the supervision of \textbf{Dr. Mustafa Basthikodi.,} in partial fulfillment of the requirements for the VI semester of \textbf{Bachelor of Engineering} in \textbf{Computer Science and Engineering}. This report has not been submitted to this or any other University  for the award of any  other degree. \\
+\vspace{0.25in}
+
+\begin{flushleft}
+\begin{tabbing}
+\textbf{Himanshu S Shetty} \hspace{0.9cm} \= \textbf{(4SF22CS078)} \\
+\textbf{M Imaad Iqbal} \hspace{1.8cm} \= \textbf{(4SF22CS111)} \\
+\textbf{Pratheek G Shetty} \hspace{1cm} \= \textbf{(4SF22CS148)} \\
+\textbf{Shifali Florine Lobo} \hspace{0.75cm} \= \textbf{(4SF22CS192)} \\
+\end{tabbing}
+Dept. of CSE, SCEM, Mangaluru \\
+\end{flushleft}
+\newpage
+\pagestyle{plain}
+\pagenumbering{roman}
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{\numberline{}Abstract}
+Ensuring the security, integrity, and accessibility of government legal records is a major challenge. Traditional centralized databases are prone to cyberattacks, data manipulation, and other issues, which can compromise sensitive legal documents and potentially slow down judicial processes. Blockchain technology provides a robust solution for enhancing record security and law enforcement procedures. Our project hopes to develop a blockchain framework for government legal records, while also analyzing blockchain’s role in law enforcement, exploring smart contracts for automating legal documentation, and assessing implementation challenges. Blockchains such as Hyperledger, are more suitable for government applications due to controlled access and enhanced security. The project focuses on legal records, law enforcement documentation, and judicial data, emphasizing a Hyperledger-based approach over cryptocurrency-based models. Expected outcomes include a tamper-proof blockchain model, improved efficiency in law enforcement, and identification of legal and technical challenges for successful implementation.
+\setstretch{1.5}
+\chapter*{Acknowledgement}
+\addcontentsline{toc}{chapter}{\numberline{}Acknowledgement}
+It is with great satisfaction and euphoria that we are submitting the Project Phase - I Report on \textbf{“Leveraging Blockchain for secure law enforcement and government records”}. We have completed it as a part of the curriculum of Visvesvaraya Technological University, Belagavi in partial fulfillment of the requirements for the VI semester of  Bachelor of Engineering in Computer Science and Engineering.
+\par
+\vspace{0.15in}
+\noindent We are profoundly indebted to our guide, \textbf{Dr. Mustafa Basthikodi}, Assistant Professor, Department of Computer Science and Engineering for innumerable acts of timely advice, encouragement and we sincerely express our gratitude.
+\par
+\vspace{0.15in}
+\noindent We also thank \textbf{Dr. Suhas A Bhyratae} and \textbf{Ms. Prapulla G}, Project Coordinators, Department of Computer Science and Engineering for their constant encouragement and support extended throughout.
+\par
+\vspace{0.15in}
+\noindent We express our sincere gratitude to \textbf{Dr. Mustafa Basthikodi}, Professor and Head, Department of Computer Science and Engineering for his invaluable support and guidance.
+\par
+\vspace{0.15in}
+\noindent We sincerely thank  \textbf{Dr. S. S. Injaganeri}, Principal, Sahyadri College of Engineering and Management, who have always been a great source of inspiration.
+\par
+\vspace{0.15in}
+\noindent Finally, yet importantly, we express our heartfelt thanks to our family and friends for their wishes and encouragement throughout the work.
+\\
+\\
+\begin{flushright}
+\textbf{Himanshu S Shetty (4SF22CS078)}\\
+\textbf{M Imaad Iqbal (4SF22CS111)} \\
+\textbf{Pratheek G Shetty (4SF22CS148)}\\
+\textbf{Shifali Florine Lobo (4SF22CS192)}
+\end{flushright}
+\setstretch{1.4}
+\renewcommand{\contentsname}{Table of Contents}
+\tableofcontents
+\addcontentsline{toc}{chapter}{\numberline{}Table of Contents}
+\listoffigures
+\addcontentsline{toc}{chapter}{\numberline{}List of Figures}
+\newpage
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\fontsize{10}{12} \selectfont Leveraging Blockchain for secure law enforcement and government records}
+\rhead{\fontsize{10}{12} \selectfont Chapter \thechapter}
+\lfoot{\fontsize{10}{12} \selectfont Department of Computer Science and Engineering, SCEM, Mangaluru}
+\rfoot{\fontsize{10}{12} \selectfont Page \thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+\setstretch{1.5}
+\pagenumbering{arabic}
+\chapter{Introduction}
+In our modern world where most of our data is digital including government documents and records, making sure that these records are completely reliable, secure and are conveniently easy to reach is very important.  Around the world many governments are experimenting with blockchain technology implementation including the countries like Estonia and Georgia to name a few. Traditional methods of record keeping usually have problems with being prone to data breaches or tampering of data. These issues can pose major problems for a government that is tasked with handling these huge amounts of data.\\
+\par
+\noindent In the digital age, where cyber threats and information warfare are growing concerns, the legal infrastructure must evolve to meet modern standards of resilience and accountability. Legal systems that continue to rely on outdated or paper-based record-keeping are increasingly vulnerable to inefficiencies and breaches. The move toward digitization is not just a technological upgrade—it is a foundational shift that influences how justice is delivered, how citizens access their rights, and how governments maintain legitimacy in the public eye.\\
+\par
+\noindent However, blockchain technology provides an excellent solution to these problems. By leveraging Hyperledger, which is an open-source set of tools built to support business transactions as well as governments and utilizing blockchain’s immutable ledger and its decentralized architecture, governments can substantially improve the transparency, security, and efficiency in legal record-keeping. This system also works well in protecting legal documents, since fraud in such cases is either highly unlikely or not easy to perform through the use of smart contracts.\\
+\par
+\noindent Beyond just securing records, blockchain-based systems offer operational advantages. For instance, the ability to trace every change or access event on a record creates a fully auditable trail, which can be crucial in legal proceedings. Such transparency is not only useful in fighting corruption or malpractice, but also in establishing clear accountability among public officials and institutions. Moreover, automated workflows using smart contracts reduce the need for intermediaries, which in turn cuts down administrative costs and red tape.\\
+\par
+\noindent As digital governance continues to mature, blockchain technology could become a backbone of secure civic infrastructure. The vision is not just limited to legal records—it could extend to voting systems, citizen identity management, and inter-agency data exchange. In this broader context, the current project serves as a foundational step toward a transparent and digitally empowered legal ecosystem that sets the stage for future innovation.\\
+\par\noindent Our project seeks to explore the possibility and feasibility of successfully incorporating this system into legal frameworks to develop government legal records that cannot be tampered with, improving law enforcement procedures and promoting greater security in the judicial process. The research looks into other forms of implementation similar to this and the difficulties that are there to implement such a system. Overall, based on the general research a blockchain model seems most appropriate considering its potential impact and widespread use in the judicial system.
+
+\chapter{Literature Survey}
+
+In this section, we explore various existing blockchain solutions related to judicial and government record management. Our goal is to understand what has already been achieved, where these systems succeed, and importantly, where they fall short. This helps us identify the gaps that our work can address.
+
+\par
+\vspace{0.15in}
+\noindent
+Liu and Zheng [1] developed a blockchain framework aimed at preserving judicial evidence with a focus on improving data integrity and traceability. Their approach strengthens the security and auditability of legal records. However, they didn’t tackle the practical challenges involved in integrating such blockchain systems within actual government infrastructures, which is a significant hurdle.
+
+\par
+\vspace{0.15in}
+\noindent
+Nakamoto [2] introduced the foundational concept of decentralized ledgers through Bitcoin, demonstrating trustless peer-to-peer transactions. While groundbreaking, its scope was purely financial and does not address the complexities of government or judicial record systems.
+
+\par
+\vspace{0.15in}
+\noindent
+The Hyperledger Foundation [3] outlined multiple enterprise blockchain frameworks, including Fabric, which support modularity and privacy. While promising for public sector use, many of these remain underutilized in legal contexts outside pilot programs.
+
+\par
+\vspace{0.15in}
+\noindent
+Zheng et al. [4] provided a technical overview of blockchain architectures, consensus protocols, and future trends. While their review is comprehensive, it lacks specific case studies on law enforcement or judicial deployments.
+
+\par
+\vspace{0.15in}
+\noindent
+Tapscott and Tapscott [5] emphasized blockchain’s potential to disrupt traditional systems, including governance. Though visionary, their insights remain largely strategic rather than technical or implementation-specific.
+
+\par
+\vspace{0.15in}
+\noindent
+The Government of Estonia [6] implemented blockchain in its national e-governance systems, including e-residency and health data. Their success is well-documented but does not fully explore applications in judicial evidence or criminal records.
+
+\par
+\vspace{0.15in}
+\noindent
+The Ministry of Justice in Georgia [7] tested blockchain in a land registry system. It improved transparency and reduced fraud but was limited to property records without exploring broader legal applications.
+
+\par
+\vspace{0.15in}
+\noindent
+Risius and Spohrer [8] proposed a research framework for understanding blockchain adoption and its impact, identifying gaps in existing literature but offering few implementation strategies for public systems.
+
+\par
+\vspace{0.15in}
+\noindent
+Atzori [9] explored decentralized governance models enabled by blockchain, suggesting potential for digital democracy. However, the study remained conceptual without addressing public sector constraints.
+
+\par
+\vspace{0.15in}
+\noindent
+Kshetri [10] examined blockchain’s role in enhancing cybersecurity and privacy. The findings are relevant to public records, but the study stops short of proposing judicial-specific use cases.
+
+\par
+\vspace{0.15in}
+\noindent
+Yaga et al. [11] from NIST provided a government-oriented overview of blockchain, clarifying its potential and limitations. However, they offered few concrete case studies involving courts or legal enforcement.
+
+\par
+\vspace{0.15in}
+\noindent
+Swan [12] presented blockchain as a foundation for a new digital economy. While insightful, the book remains general-purpose and lacks attention to public sector needs.
+
+\par
+\vspace{0.15in}
+\noindent
+Sun et al. [13] proposed blockchain frameworks for smart cities, focusing on sharing economy models. Their ideas are adjacent but do not address legal or judiciary contexts.
+
+\par
+\vspace{0.15in}
+\noindent
+Pilkington [14] introduced core blockchain principles and applications in digital transformation. Though applicable, there is limited emphasis on legal or forensic evidence use.
+
+\par
+\vspace{0.15in}
+\noindent
+The European Commission [15] published a report on blockchain's potential for digital government. It suggests policy directions but lacks technical implementations.
+
+\par
+\vspace{0.15in}
+\noindent
+Cong and He [16] discussed blockchain’s potential to improve transparency and market fairness via smart contracts. While rigorous, their model is rooted in finance, not law or governance.
+
+\par
+\vspace{0.15in}
+\noindent
+Zyskind et al. [17] built a privacy-preserving blockchain system for personal data control. Their emphasis on user sovereignty is relevant but diverges from institutional record-keeping.
+
+\par
+\vspace{0.15in}
+\noindent
+Bhaskar and Chuen [18] explored the role of smart contracts in issuing verifiable digital certificates. This directly informs trust mechanisms in public documents, though the scale is limited.
+
+\par
+\vspace{0.15in}
+\noindent
+Saito and Yamada [19] examined how blockchain redefines trust, offering a conceptual look at its transformative role. However, the paper does not transition from theory to real-world trials.
+
+\par
+\vspace{0.15in}
+\noindent
+Yue et al. [20] demonstrated a blockchain framework for healthcare data sharing, emphasizing privacy and auditability. Though outside the judiciary, the architecture inspires ideas for forensic data sharing.
+
+\par
+\vspace{0.15in}
+\noindent
+Kassen [21] proposed a blockchain-based model for lifelong, cross-referenced e-government services. It introduces a scalable architecture but lacks judiciary-specific modules.
+
+\par
+\vspace{0.15in}
+\noindent
+Al Mamun et al. [22] reviewed blockchain-based EHR systems. Their emphasis on confidentiality and trust maps well onto the legal sector’s needs for data protection.
+
+\par
+\vspace{0.15in}
+\noindent
+Sousa [23] identified blockchain as a transformative force in the public sector. However, the analysis is focused on macro-level shifts, not technical deployments.
+
+\par
+\vspace{0.15in}
+\noindent
+Khan et al. [24] analyzed Dubai’s government blockchain initiatives. Their report showcases operational benefits and legal considerations, making it highly relevant for our context.
+
+\par
+\vspace{0.15in}
+\noindent
+Tan et al. [25] proposed a framework for blockchain governance in the public sector. While conceptually strong, it lacks empirical validation through live deployments.
+
+\par
+\vspace{0.15in}
+\noindent
+Kim et al. [26] created a privacy-preserving ledger framework for global human resource records. Its architecture suggests parallels with identity and role verification in legal systems.
+
+\par
+\vspace{0.15in}
+\noindent
+Piao et al. [27] introduced a Service-on-Chain (SOC) model for secure government data sharing. Their approach offers a scalable and privacy-conscious design relevant for legal records.
+
+\par
+\vspace{0.15in}
+\noindent
+Elisa et al. [28] designed a blockchain and artificial immunity-based e-government framework. It adds layers of AI-based trust assessment, though implementation remains in early stages.
+
+\par
+\vspace{0.15in}
+\noindent
+Mahlaba et al. [29] proposed a secure document storage system to prevent corruption. Their model is tailored for sensitive documents, aligning closely with our project's goals.
+
+\par
+\vspace{0.15in}
+\noindent
+Wang et al. [30] explored identity and data protection using blockchain trust models. This contributes to the broader conversation on secure authentication and access control.
+
+\par
+\vspace{0.15in}
+\noindent
+To sum up, while the literature clearly highlights blockchain’s ability to bring transparency, security, and trust to governmental and judicial records, many solutions are still theoretical or narrowly focused. Real-world, scalable applications that cover the full spectrum of legal and government data management are still needed, and that is where our work aims to contribute.
+.
+
+\chapter{Problem Formulation}
+
+\section{Problem Statement}
+
+Government legal records are critical assets that require secure, tamper-proof, and transparent handling. Traditional centralized record management systems are vulnerable to cyberattacks, unauthorized modifications, and data loss. These vulnerabilities undermine trust in judicial systems and delay legal proceedings. There is a pressing need for a secure, decentralized solution that ensures integrity, transparency, and traceability of legal documents.
+
+\section{Problem Description}
+
+The proposed project aims to address these issues by leveraging blockchain technology to build a secure and transparent framework for managing government legal records. Using Hyperledger Fabric, a permissioned blockchain platform, the system will ensure that access to legal data is strictly controlled and auditable. Smart contracts will automate document verification, timestamping, and access authorization, reducing human errors and procedural delays. The architecture includes a distributed ledger for tamper-proof recordkeeping, a client interface for user access, and secure APIs for system integration. The system also incorporates encryption services and identity management to safeguard sensitive data. This blockchain-based solution is expected to enhance efficiency, accountability, and public trust in legal and law enforcement institutions while addressing implementation challenges such as scalability, interoperability, and legal compliance.
+
+
+\section{Objectives}
+
+\begin{itemize}
+    \item Develop a Hyperledger Fabric-based system for managing law enforcement records securely.
+    \item Create a pipeline to hash documents and store files off-chain with on-chain hash verification.
+    \item Implement smart contracts to automate legal processes such as evidence validation and warrant issuance.
+    \item Apply role-based access control and maintain audit logs for all actions within the system.
+    \item Assess scalability, legal compliance, and integration with existing government systems.
+\end{itemize}
+
+\chapter{Software Requirements Specification}
+
+\section{Functional Requirements}
+\begin{itemize}
+    \item \textbf{Secure Record Creation:} The system must allow authorized government officials to create and upload legal records securely onto the blockchain.
+    
+    \item \textbf{Smart Contract Execution:} The system must support smart contracts for automating document approval, verification, and transfer of ownership.
+    
+    \item \textbf{Tamper-Proof Record Storage:} The system must ensure that once a record is written to the blockchain, it cannot be modified without consensus.
+    
+    \item \textbf{User Access Management:} The system must offer role-based access, allowing different levels of interaction for law enforcement, judicial staff, and public users.
+    
+    \item \textbf{Audit Trail Generation:} The system must generate immutable logs of all transactions for verification and legal traceability.
+\end{itemize}
+
+\section{Non-Functional Requirements}
+\begin{itemize}
+    \item \textbf{Security and Privacy:} The system must implement end-to-end encryption and comply with data protection policies applicable to legal records.
+
+    \item \textbf{Performance:} Blockchain transactions (e.g., record uploads and retrieval) must be processed within seconds to ensure practical usability.
+
+    \item \textbf{Scalability:} The system must support increasing volumes of legal data, users, and transactions, and scale effectively across multiple government departments or jurisdictions.
+
+    \item \textbf{Availability:} The system should have high availability to ensure 24/7 access to legal data, particularly for law enforcement and judiciary needs.
+
+    \item \textbf{Maintainability:} The codebase and infrastructure must be modular and well-documented to support updates, patching, and integration with legacy systems.
+
+    \item \textbf{Interoperability:} The solution must support integration with existing digital case management systems, e-governance portals, and authentication services.
+\end{itemize}
+
+\section{Software and Tools}
+
+\begin{itemize}
+    \item \textbf{Hyperledger Fabric (v2.5):} Used to build a permissioned blockchain network with support for modular components such as consensus and membership services.
+
+    \item \textbf{JavaScript (Node.js v18+):} Serves as the primary programming language for developing backend logic, writing chaincode, and integrating with the Hyperledger SDK.
+
+    \item \textbf{Docker:} Used to containerize network components including peers, orderers, and certificate authorities, ensuring consistency and ease of deployment.
+
+    \item \textbf{fabric-sdk-node / fabric-ca-client / fabric-contract-api:} These Hyperledger Fabric libraries enable client-side interactions with the blockchain network, handle user enrollment and identity management, and define smart contract APIs.
+
+    \item \textbf{ExpressJS / NextJS:} ExpressJS is used to build the RESTful backend APIs while NextJS powers the frontend interface with server-side rendering capabilities.
+
+    \item \textbf{crypto-js:} Provides cryptographic functions such as hashing and AES encryption to ensure data integrity and confidentiality.
+
+    \item \textbf{CouchDB (v3.2):} Acts as the state database for storing the current world state of the blockchain ledger, enabling efficient querying and indexing of chaincode data.
+
+    \item \textbf{Encrypted File Storage (e.g., IPFS / Local Vaults):} Supports off-chain document storage for large or non-transactional data while preserving immutability and auditability.
+\end{itemize}
+
+\chapter{System Design}
+\section{Architecture Diagram}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{fig/arc.png} % replace with your image filename
+    \caption{ Component-Based Architecture for Legal Blockchain Application}
+    \label{fig:architecture}
+\end{figure}
+
+\vspace{0.5em}
+
+\noindent This diagram presents a comprehensive overview of a dynamic resource allocation system designed for AI workloads. It highlights multiple layers, from security measures that control access and protect data, to core components managing business logic and smart contracts, all the way to client interfaces and data storage solutions. This layered set-up ensures a secure, efficient, and scalable environment for managing complex AI processes.
+\section{Use Case Diagram}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{fig/usecase.png}
+    \captionsetup{justification=centering}
+    \caption{Use Case Diagram showing the interaction between users, backend server and the ledger.}
+    \label{fig:use_case_diagram}
+\end{figure}
+
+This diagram illustrates the various actors and use cases in the system. End users can request access to legal records, view approved documents, and track the status of their requests. Administrators manage permissions and oversee approval workflows, while government agencies are responsible for uploading verified documents and auditing smart contract logs. The structure ensures transparency, accountability, and controlled access to sensitive data using blockchain technology.
+\newpage
+\section{Data Flow Diagrams}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.75\textwidth]{fig/level0_df.png}
+    \caption{Level 0 Data Flow Diagram: Overview of the evidence capture and storage system}
+    \label{fig:level0df}
+\end{figure}
+
+\noindent The Level 0 Data Flow Diagram provides a high-level overview of the system. It illustrates the basic interaction between users, the evidence capture mechanism, and the backend services responsible for storage and verification. The user submits evidence through a trusted interface, which is then securely processed and stored using blockchain and distributed storage technologies to ensure data integrity and immutability.
+
+\vspace{2em}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fig/level1_df.png}
+    \caption{Level 1 Data Flow Diagram: Breakdown of subsystems involved in evidence processing}
+    \label{fig:level1df}
+\end{figure}
+
+\noindent The Level 1 Data Flow Diagram expands the high-level architecture into distinct subsystems: evidence acquisition, preprocessing, and secure storage. Evidence is collected using a specialised capture device and temporarily stored. It then undergoes digital signing and watermarking before being transferred to the backend. The backend handles communication with IPFS for storing encrypted file chunks and with the Hyperledger Fabric ledger for recording metadata.
+
+\vspace{2em}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1\textwidth]{fig/level2_df.png}
+    \caption{Level 2 Data Flow Diagram: Detailed internal flow of hashing, encryption, and metadata storage}
+    \label{fig:level2df}
+\end{figure}
+
+\noindent The Level 2 Data Flow Diagram details the internal flow of evidence processing. After capture and preprocessing, the evidence is hashed using SHA-256, encrypted using AES with a unique key and IV, and then split into multiple chunks. These chunks are uploaded to IPFS, and their content identifiers (CIDs) are collected. A metadata object containing the file hash, AES key, IV, and chunk CIDs is created and stored on a Hyperledger ledger. This layered approach ensures traceability, tamper-evidence, and secure retrieval through REST-based queries and backend logic.
+
+
+\section{Class Diagram}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{fig/class_diag.png} % Replace with the actual new path if updated
+    \captionsetup{justification=centering}
+    \caption{Class diagram illustrating the modular design of a blockchain-enabled access control system for cloud services.}
+    \label{fig:class-diagram}
+\end{figure}
+
+This class diagram demonstrates the object-oriented architecture of a secure access control system built using blockchain technology. The system is composed of the following major components:
+
+\begin{itemize}
+    \item \textbf{User:} Represents individuals attempting to access cloud resources. Attributes include \texttt{userID}, \texttt{name}, and \texttt{role}. Methods like \texttt{login()} and \texttt{requestAccess()} initiate interaction with the system.
+    
+    \item \textbf{AccessControlService:} Core service class responsible for verifying user credentials and checking resource permissions using the \texttt{verifyCredentials()} and \texttt{checkPermissions()} methods.
+    
+    \item \textbf{PermissionLedger:} Stores user permissions in a map structure and provides the method \texttt{getPermissions()} to retrieve access rights based on userID.
+    
+    \item \textbf{SmartContract:} Encapsulates blockchain logic for validating access (\texttt{validateAccess()}) and executing rules (\texttt{executeAccessRule()}). Operates autonomously on the blockchain.
+    
+    \item \textbf{BlockchainNode:} Responsible for recording validated access requests using \texttt{storeTransaction()} and ensuring data consistency through \texttt{validateBlock()}.
+    
+    \item \textbf{CloudResource:} Represents resources such as storage, compute, or database services. Grants access via \texttt{grantAccess()} and stores resource identifiers.
+    
+    \item \textbf{StorageService, ComputeService, DatabaseService:} Subclasses of CloudResource, each supporting domain-specific methods:
+    \begin{itemize}
+        \item \texttt{StorageService:} \texttt{saveData()}, \texttt{retrieveData()}
+        \item \texttt{ComputeService:} \texttt{runProcess()}, \texttt{allocateResources()}
+        \item \texttt{DatabaseService:} \texttt{queryData()}, \texttt{updateRecord()}
+    \end{itemize}
+\end{itemize}
+The modular design enables clear separation of concerns, where user interactions, access validation, blockchain transaction management, and resource provisioning are handled independently. This architecture ensures scalability, auditability, and security in managing resource access in a distributed cloud environment.
+
+
+\section{Sequence Diagram}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{fig/seq.png} % Replace with your actual path
+    \captionsetup{justification=centering}
+    \caption{Sequence diagram demonstrating the request-response workflow from the user to the blockchain network and cloud services.}
+    \label{fig:sequence-diagram}
+\end{figure}
+
+This sequence diagram illustrates the step-by-step flow of operations when a user attempts to access a protected resource. The request is first verified by the access control service, which then checks permissions and engages smart contracts on the blockchain for validation. Upon approval, the user is granted access to the requested cloud-based resource. This ensures all access activities are secure, traceable, and compliant with system policies.
+
+\chapter{Results and Discussion}
+
+\noindent
+Throughout this project, we explored how blockchain technology—specifically Hyperledger Fabric—can transform the handling of legal and forensic evidence in government systems. The goal was not only to build a tamper-resistant backend but to address real-world challenges around security, transparency, and public accountability.
+
+\vspace{0.15in}
+\noindent
+\textbf{Enhanced Security and Data Integrity:} \\
+One of the most significant outcomes of this project is the assurance of data integrity. By hashing files and storing metadata on the blockchain, we ensure that evidence cannot be altered or deleted once recorded. This immutability is critical in legal contexts where chain-of-custody and authenticity must be provable.
+
+\vspace{0.15in}
+\noindent
+\textbf{Process Automation via Smart Contracts:} \\
+Through the use of JavaScript-based chaincode, we automated the validation and registration of forensic data. Smart contracts enabled rule enforcement at the protocol level, minimizing manual intervention and reducing delays in evidence handling and verification.
+
+\vspace{0.15in}
+\noindent
+\textbf{Practical Viability and Integration:} \\
+The system was developed using Dockerized Hyperledger Fabric on WSL, with an Express.js backend and a Next.js frontend. JWT was used to enforce user authentication. These choices allowed seamless modular deployment and integration into existing government-grade systems.
+
+\vspace{0.15in}
+\noindent
+\textbf{Postman Testing and Validation:} \\
+API endpoints were rigorously tested using Postman to verify system behavior during file upload, metadata retrieval, and integrity validation. The results confirmed end-to-end flow from the frontend to the Fabric ledger and IPFS.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fig/postman2.jpg}
+    \captionsetup{justification=centering}
+    \caption{Postman Test: Evidence Upload API returning success with hash and CID storage confirmation}
+    \label{fig:postman_upload}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fig/postman.jpg}
+    \captionsetup{justification=centering}
+    \caption{Postman Test: Metadata Retrieval showing hash, key, IV, and chunk references from ledger}
+    \label{fig:postman_query}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fig/evUp.jpg}
+    \captionsetup{justification=centering}
+    \caption{Evidence Commit Page: Interface to submit new evidence to the ledger}
+    \label{fig:postman_query}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fig/gmap.jpg}
+    \captionsetup{justification=centering}
+    \caption{Global IPFS Map: A webpage showcasing the global ipfs storage system nodes along with the node statistics}
+    \label{fig:postman_query}
+\end{figure}
+\vspace{0.15in}
+\noindent
+\textbf{Conclusion:} \\
+The project demonstrates how a carefully architected blockchain-based approach can solve persistent challenges in forensic and legal data management. By integrating cryptographic assurance, decentralized storage, and auditable workflows, we present a scalable and government-ready solution for handling sensitive public records.
+
+
+\chapter{Project Plan}
+
+\vspace*{1cm} % optional vertical space after chapter title
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth,height=0.9\textheight,keepaspectratio]{fig/gantt.png}
+    \captionsetup{justification=centering}
+    \caption{Gantt chart illustrating the planned approach and timeline for the blockchain-based legal records management system, highlighting key milestones and phases of the project execution.}
+    \label{fig:project-plan}
+\end{figure}
+
+
+\chapter{Conclusion}
+
+Managing legal and law enforcement records in a secure and trustworthy way is one of the biggest challenges faced by modern governments. Traditional centralized systems often fall short—they’re vulnerable to tampering, hard to audit, and can slow down critical processes due to manual interventions. This project set out to explore a better alternative, using blockchain technology as the foundation for a more transparent and efficient approach.
+
+\noindent By using Hyperledger Fabric, we built a system that not only protects the integrity of legal records but also brings in automation through smart contracts. This means tasks like verifying evidence or issuing warrants can happen faster, more securely, and with fewer chances of human error. We also introduced role-based access and audit logs to ensure that only authorized users can access sensitive information—and that every action is traceable.
+
+\noindent Our approach blends on-chain verification with off-chain storage to balance scalability and performance, making it practical for real-world use in government settings. More importantly, it creates a system that citizens and officials can trust—one where data is tamper-proof and accessible when needed.
+
+\noindent In short, this project demonstrates how blockchain isn’t just a buzzword—it can play a meaningful role in transforming how governments manage and protect some of their most important data. With continued development and support, systems like these could become a cornerstone of future public infrastructure.
+
+\newpage
+\pagestyle{plain}
+% Preamble (add this if not already included)
+% In your main file where you want the references to appear:
+\renewcommand{\bibname}{References}
+\addcontentsline{toc}{chapter}{References}
+
+\begin{thebibliography}{99}
+
+\bibitem{liu}
+Liu, S. and Zheng, Q. (2024). A study of a blockchain-based judicial evidence preservation scheme. \textit{Blockchain: Research and Applications}, 5, 100192.\\
+\url{https://doi.org/10.1016/j.bcra.2024.100192}
+
+\bibitem{nakamoto}
+Nakamoto, S. (2008). Bitcoin: A Peer-to-Peer Electronic Cash System.\\
+\url{https://bitcoin.org/bitcoin.pdf}
+
+\bibitem{hyperledger}
+Hyperledger Foundation. (n.d.). Hyperledger Blockchain Frameworks for Business and Government.\\
+\url{https://www.hyperledger.org}
+
+\bibitem{zheng}
+Zheng, Z., Xie, S., Dai, H., Chen, X., and Wang, H. (2017). An overview of blockchain technology: Architecture, consensus, and future trends. \textit{Proceedings of the IEEE International Congress on Big Data}.\\
+\url{https://doi.org/10.1109/BigDataCongress.2017.85}
+
+\bibitem{tapscott}
+Tapscott, D. and Tapscott, A. (2016). \textit{Blockchain Revolution: How the Technology Behind Bitcoin is Changing Money, Business, and the World}. Penguin Random House.
+\\
+\url{https://books.google.co.in/books/about/Blockchain_Revolution.html?id=NqBiCgAAQBAJ&redir_esc=y}
+
+\bibitem{estonia}
+Government of Estonia. (n.d.). Estonia’s Digital Government and Blockchain Implementation.\\
+\url{https://e-estonia.com}
+
+\bibitem{georgia}
+Ministry of Justice, Georgia. (2017). Blockchain for Land Registry: A Case Study on Secure Government Records.\\
+\url{https://gov.ge/blockchain-land-registry}
+
+\bibitem{risius}
+Risius, M. and Spohrer, K. (2017). A blockchain research framework: What we (don’t) know, where we go from here, and how we will get there. \textit{Business \& Information Systems Engineering}, 59(6), 385–409.\\
+\url{https://link.springer.com/article/10.1007/s12599-017-0506-0}
+
+\bibitem{atzori}
+Atzori, M. (2017). Blockchain technology and decentralized governance: Is the state still necessary? \textit{Journal of Governance and Regulation}, 6(1), 45–62.\\
+\url{http://dx.doi.org/10.22495/jgr_v6_i1_p5}
+
+\bibitem{kshetri}
+Kshetri, N. (2018). Blockchain’s roles in strengthening cybersecurity and protecting privacy. \textit{Telecommunications Policy}, 42(4), 335–344.\\
+\url{https://doi.org/10.1016/j.telpol.2017.09.003}
+
+\bibitem{nist}
+Yaga, D., Mell, P., Roby, N., and Scarfone, K. (2018). Blockchain Technology Overview. \textit{National Institute of Standards and Technology (NIST)}.\\
+\url{https://doi.org/10.6028/NIST.IR.8202}
+
+\bibitem{swan}
+Swan, M. (2015). \textit{Blockchain: Blueprint for a New Economy}. O’Reilly Media.\\
+\url{https://books.google.co.in/books/about/Blockchain.html?id=ygzcrQEACAAJ&redir_esc=y}
+
+\bibitem{sun}
+Sun, J., Yan, J., and Zhang, K. Z. (2016). Blockchain-based sharing services: What blockchain technology can contribute to smart cities. \textit{Financial Innovation}, 2(26).\\
+\url{http://dx.doi.org/10.1186/s40854-016-0040-y}
+
+\bibitem{pilkington}
+Pilkington, M. (2016). Blockchain technology: Principles and applications. In \textit{Research Handbook on Digital Transformations}. Edward Elgar Publishing.\\
+\url{https://doi.org/10.4337/9781784717766}
+
+\bibitem{europe}
+European Commission. (2019). Blockchain for Digital Government: A European Perspective.\\
+\url{https://ec.europa.eu/digital-strategy}
+
+\bibitem{cong}
+Cong, L. W. and He, Z. (2019). Blockchain disruption and smart contracts. \textit{The Review of Financial Studies}, 32(5), 1754–1797.\\
+\url{https://doi.org/10.1093/rfs/hhz007}
+
+\bibitem{zyskind}
+Zyskind, G., Nathan, O., and Pentland, A. (2015). Decentralizing privacy: Using blockchain to protect personal data. \textit{IEEE Security and Privacy Workshops}, 180–184.\\
+\url{https://doi.org/10.1109/SPW.2015.27}
+
+\bibitem{bhaskar}
+Bhaskar, N. D., and Chuen, D. L. K. (2017). \textit{Blockchain and Smart Contract for Digital Certification}. Springer.\\
+\url{http://dx.doi.org/10.1007/978-3-031-22835-3}
+
+\bibitem{saito}
+Saito, T., and Yamada, T. (2016). What’s so different about blockchain? Decentralized trust and the future of digital transactions. \textit{Harvard Business Review}.\\
+\url{https://hbr.org/2017/01/the-truth-about-blockchain}
+
+\bibitem{yue}
+Yue, X., Wang, H., Jin, D., Li, M., and Jiang, W. (2016). Healthcare data gateways: A blockchain-based secure data exchange architecture for healthcare information systems. \textit{Journal of Medical Systems}, 40(10), 218.\\
+\url{https://doi.org/10.1016/j.jnca.2023.103633}
+
+\bibitem{kassen}
+Kassen, M. (2024). Blockchain and public service delivery: a lifetime cross-referenced model for e-government. \textit{Information Polity}.\\
+\url{https://doi.org/10.1080/17517575.2024.2317175}
+
+\bibitem{almamun}
+Al Mamun, A., Azam, S., \& Gritti, C. (2022). Blockchain-Based Electronic Health Records Management: A Comprehensive Review and Future Research Direction. \textit{IEEE Access}.\\
+\url{https://doi.org/10.1109/ACCESS.2022.3141079}
+
+\bibitem{Sousa2023}
+Sousa, M. J. (2023). Blockchain as a driver for transformations in the public sector. \textit{Journal of Innovation and Entrepreneurship}.\\
+\url{https://doi.org/10.1080/25741292.2023.2267864}
+
+\bibitem{dubai}
+Khan, S., Shael, M., Majdalawieh, M., Nizamuddin, N., \& Nicho, M. (2022). Blockchain for Governments: The Case of the Dubai Government. \textit{Sustainability}, 14(11), 6576.\\
+\url{https://doi.org/10.3390/su14116576}
+
+\bibitem{tan2021}
+Tan, E., Mahula, S., \& Crompvoets, J. (2022). Blockchain governance in the public sector: A conceptual framework for public management. \textit{Government Information Quarterly}, 39(1), 101625.\\
+\url{https://doi.org/10.1016/j.giq.2021.101625}
+
+\bibitem{kim2020}
+Kim, T.-H., Kumar, G., Saha, R., Rai, M. K., Buchanan, W. J., \& Thomas, R. (2020). A Privacy Preserving Distributed Ledger Framework for Global Human Resource Record Management: The Blockchain Aspect. \textit{IEEE Access}.\\
+\url{https://doi.org/10.1109/ACCESS.2020.2995481}
+
+\bibitem{piao2021}
+Piao, C., Hao, Y., Yan, J., \& Jiang, X. (2021). Privacy preserving in blockchain-based government data sharing: A Service-On-Chain (SOC) approach. \textit{Information Processing \& Management}, 58(5), 1026.\\
+\url{https://doi.org/10.1016/j.ipm.2021.1026}
+
+\bibitem{elisa2023}
+Elisa, N., Yang, L., Chao, F., Naik, N., \& Boongoen, T. (2023). A Secure and Privacy-Preserving E-Government Framework Using Blockchain and Artificial Immunity. \textit{IEEE Access}.\\
+\url{https://doi.org/10.1109/ACCESS.2023.3239814}
+
+\bibitem{mahlaba2022}
+Mahlaba, J., Mishra, A. K., Puthal, D., \& Sharma, P. K. (2022). Blockchain-Based Sensitive Document Storage to Mitigate Corruptions. \textit{IEEE Transactions on Engineering Management}.\\
+\url{https://doi.org/10.1109/TEM.2022.3183867}
+
+\bibitem{wang2024}
+Wang, F., Gai, Y., \& Zhang, H. (2024). Blockchain user digital identity big data and information security process protection based on network trust. \textit{Journal of King Saud University - Computer and Information Sciences}.\\
+\url{https://doi.org/10.1016/j.jksuci.2024.102031}
+
+
+
+
+\end{thebibliography}
+
+\end{document}
