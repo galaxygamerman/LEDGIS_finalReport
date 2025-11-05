@@ -1,0 +1,60 @@
+\chapter{Results and Discussion}
+
+\noindent
+Throughout this project, we explored how blockchain technology—specifically Hyperledger Fabric—can transform the handling of legal and forensic evidence in government systems. The goal was not only to build a tamper-resistant backend but to address real-world challenges around security, transparency, and public accountability.
+
+\vspace{0.15in}
+\noindent
+\textbf{Enhanced Security and Data Integrity:} \\
+One of the most significant outcomes of this project is the assurance of data integrity. By hashing files and storing metadata on the blockchain, we ensure that evidence cannot be altered or deleted once recorded. This immutability is critical in legal contexts where chain-of-custody and authenticity must be provable.
+
+\vspace{0.15in}
+\noindent
+\textbf{Process Automation via Smart Contracts:} \\
+Through the use of JavaScript-based chaincode, we automated the validation and registration of forensic data. Smart contracts enabled rule enforcement at the protocol level, minimizing manual intervention and reducing delays in evidence handling and verification.
+
+\vspace{0.15in}
+\noindent
+\textbf{Practical Viability and Integration:} \\
+The system was developed using Dockerized Hyperledger Fabric on WSL, with an Express.js backend and a Next.js frontend. JWT was used to enforce user authentication. These choices allowed seamless modular deployment and integration into existing government-grade systems.
+
+\vspace{0.15in}
+\noindent
+\textbf{Postman Testing and Validation:} \\
+API endpoints were rigorously tested using Postman to verify system behavior during file upload, metadata retrieval, and integrity validation. The results confirmed end-to-end flow from the frontend to the Fabric ledger and IPFS.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fig/postman2.jpg}
+    \captionsetup{justification=centering}
+    \caption{Postman Test: Evidence Upload API returning success with hash and CID storage confirmation}
+    \label{fig:postman_upload}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fig/postman.jpg}
+    \captionsetup{justification=centering}
+    \caption{Postman Test: Metadata Retrieval showing hash, key, IV, and chunk references from ledger}
+    \label{fig:postman_query}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fig/evUp.jpg}
+    \captionsetup{justification=centering}
+    \caption{Evidence Commit Page: Interface to submit new evidence to the ledger}
+    \label{fig:postman_query}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fig/gmap.jpg}
+    \captionsetup{justification=centering}
+    \caption{Global IPFS Map: A webpage showcasing the global ipfs storage system nodes along with the node statistics}
+    \label{fig:postman_query}
+\end{figure}
+\vspace{0.15in}
+\noindent
+\textbf{Conclusion:} \\
+The project demonstrates how a carefully architected blockchain-based approach can solve persistent challenges in forensic and legal data management. By integrating cryptographic assurance, decentralized storage, and auditable workflows, we present a scalable and government-ready solution for handling sensitive public records.

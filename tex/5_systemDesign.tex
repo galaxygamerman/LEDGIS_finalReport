@@ -1,0 +1,105 @@
+\chapter{System Design}
+\section{Architecture Diagram}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{fig/arc.png} % replace with your image filename
+    \caption{ Component-Based Architecture for Legal Blockchain Application}
+    \label{fig:architecture}
+\end{figure}
+
+\vspace{0.5em}
+
+\noindent This diagram presents a comprehensive overview of a dynamic resource allocation system designed for AI workloads. It highlights multiple layers, from security measures that control access and protect data, to core components managing business logic and smart contracts, all the way to client interfaces and data storage solutions. This layered set-up ensures a secure, efficient, and scalable environment for managing complex AI processes.
+\section{Use Case Diagram}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{fig/usecase.png}
+    \captionsetup{justification=centering}
+    \caption{Use Case Diagram showing the interaction between users, backend server and the ledger.}
+    \label{fig:use_case_diagram}
+\end{figure}
+
+This diagram illustrates the various actors and use cases in the system. End users can request access to legal records, view approved documents, and track the status of their requests. Administrators manage permissions and oversee approval workflows, while government agencies are responsible for uploading verified documents and auditing smart contract logs. The structure ensures transparency, accountability, and controlled access to sensitive data using blockchain technology.
+\newpage
+\section{Data Flow Diagrams}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.75\textwidth]{fig/level0_df.png}
+    \caption{Level 0 Data Flow Diagram: Overview of the evidence capture and storage system}
+    \label{fig:level0df}
+\end{figure}
+
+\noindent The Level 0 Data Flow Diagram provides a high-level overview of the system. It illustrates the basic interaction between users, the evidence capture mechanism, and the backend services responsible for storage and verification. The user submits evidence through a trusted interface, which is then securely processed and stored using blockchain and distributed storage technologies to ensure data integrity and immutability.
+
+\vspace{2em}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fig/level1_df.png}
+    \caption{Level 1 Data Flow Diagram: Breakdown of subsystems involved in evidence processing}
+    \label{fig:level1df}
+\end{figure}
+
+\noindent The Level 1 Data Flow Diagram expands the high-level architecture into distinct subsystems: evidence acquisition, preprocessing, and secure storage. Evidence is collected using a specialised capture device and temporarily stored. It then undergoes digital signing and watermarking before being transferred to the backend. The backend handles communication with IPFS for storing encrypted file chunks and with the Hyperledger Fabric ledger for recording metadata.
+
+\vspace{2em}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1\textwidth]{fig/level2_df.png}
+    \caption{Level 2 Data Flow Diagram: Detailed internal flow of hashing, encryption, and metadata storage}
+    \label{fig:level2df}
+\end{figure}
+
+\noindent The Level 2 Data Flow Diagram details the internal flow of evidence processing. After capture and preprocessing, the evidence is hashed using SHA-256, encrypted using AES with a unique key and IV, and then split into multiple chunks. These chunks are uploaded to IPFS, and their content identifiers (CIDs) are collected. A metadata object containing the file hash, AES key, IV, and chunk CIDs is created and stored on a Hyperledger ledger. This layered approach ensures traceability, tamper-evidence, and secure retrieval through REST-based queries and backend logic.
+
+
+\section{Class Diagram}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{fig/class_diag.png} % Replace with the actual new path if updated
+    \captionsetup{justification=centering}
+    \caption{Class diagram illustrating the modular design of a blockchain-enabled access control system for cloud services.}
+    \label{fig:class-diagram}
+\end{figure}
+
+This class diagram demonstrates the object-oriented architecture of a secure access control system built using blockchain technology. The system is composed of the following major components:
+
+\begin{itemize}
+    \item \textbf{User:} Represents individuals attempting to access cloud resources. Attributes include \texttt{userID}, \texttt{name}, and \texttt{role}. Methods like \texttt{login()} and \texttt{requestAccess()} initiate interaction with the system.
+    
+    \item \textbf{AccessControlService:} Core service class responsible for verifying user credentials and checking resource permissions using the \texttt{verifyCredentials()} and \texttt{checkPermissions()} methods.
+    
+    \item \textbf{PermissionLedger:} Stores user permissions in a map structure and provides the method \texttt{getPermissions()} to retrieve access rights based on userID.
+    
+    \item \textbf{SmartContract:} Encapsulates blockchain logic for validating access (\texttt{validateAccess()}) and executing rules (\texttt{executeAccessRule()}). Operates autonomously on the blockchain.
+    
+    \item \textbf{BlockchainNode:} Responsible for recording validated access requests using \texttt{storeTransaction()} and ensuring data consistency through \texttt{validateBlock()}.
+    
+    \item \textbf{CloudResource:} Represents resources such as storage, compute, or database services. Grants access via \texttt{grantAccess()} and stores resource identifiers.
+    
+    \item \textbf{StorageService, ComputeService, DatabaseService:} Subclasses of CloudResource, each supporting domain-specific methods:
+    \begin{itemize}
+        \item \texttt{StorageService:} \texttt{saveData()}, \texttt{retrieveData()}
+        \item \texttt{ComputeService:} \texttt{runProcess()}, \texttt{allocateResources()}
+        \item \texttt{DatabaseService:} \texttt{queryData()}, \texttt{updateRecord()}
+    \end{itemize}
+\end{itemize}
+The modular design enables clear separation of concerns, where user interactions, access validation, blockchain transaction management, and resource provisioning are handled independently. This architecture ensures scalability, auditability, and security in managing resource access in a distributed cloud environment.
+
+
+\section{Sequence Diagram}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{fig/seq.png} % Replace with your actual path
+    \captionsetup{justification=centering}
+    \caption{Sequence diagram demonstrating the request-response workflow from the user to the blockchain network and cloud services.}
+    \label{fig:sequence-diagram}
+\end{figure}
+
+This sequence diagram illustrates the step-by-step flow of operations when a user attempts to access a protected resource. The request is first verified by the access control service, which then checks permissions and engages smart contracts on the blockchain for validation. Upon approval, the user is granted access to the requested cloud-based resource. This ensures all access activities are secure, traceable, and compliant with system policies.
