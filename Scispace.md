@@ -25,7 +25,6 @@ This section situates the selected top 20 papers and summarizes their metadata a
 | 13 | hChain: Blockchain Based Large Scale EHR Data Sharing — Musharraf Alruwaill et al. | 2025 | arXiv preprint | Edge + IoMT integration, symmetric/asymmetric encryption, SHA‑256 hashing, smart contracts [13] | https://doi.org/10.48550/arXiv.2505.12610 |
 | 14 | Efficient sensitivity orient blockchain encryption for cloud — A. Siva Kumar et al. | 2021 | Concurrent Engineering | Sensitivity‑aware blockchain encryption scheme (RSFSA) for cloud data [14] | https://doi.org/10.1177/1063293X211008586 |
 | 15 | Secure and Efficient Data Storage and Sharing Scheme Based on Double Blockchain — L. Zhang et al. | (date n/a) | Tech Science / conference | Double‑blockchain architecture, ABE, encrypted EMR off‑chain storage [15] | https://doi.org/10.32604/cmc.2020.012205 |
-| 16 | Method for storing and sharing secure files based on blockchain — Fan Kai et al. | 2018 | Patent | File pointers on blockchain, encrypted off‑chain files, PKC and ACLs recorded on ledger [16] |  |
 | 17 | AES encryption in blockchain serverless storage — Meenakshi Kandpal et al. | 2024 | Facta universitatis | Permissioned blockchain + AES selected for serverless off‑chain encrypted storage [17] |  |
 | 18 | Permissioned blockchain for automotive supply chain — Saima Zafar et al. | 2022 | Sensors | Hyperledger Fabric permissioned ledger for tamper‑proof records with practical evaluation [18] |  |
 | 19 | Blockchain Tree for distributed personal ID data — Sergii Kushch et al. | 2019 | arXiv | Multilevel "Blockchain Tree" with subchains for ID data and access control [19] |  |
@@ -158,14 +157,6 @@ This section presents concise structured summaries of the 20 papers, emphasizing
   - **Key findings and contributions**: Proposes the double‑blockchain model as a mechanism to balance security and efficiency in medical record sharing [15].  
   - **Secure transmission and storage**: Off‑chain encrypted EMRs plus on‑chain indexes and ACLs protect confidentiality during storage and transmission [15].  
   - **Limitations mentioned**: Paper provides limited detailed performance evaluation and lacks real‑world deployment data [15].
-
-- **[16]**  
-  - **Title authors year venue**: Method for storing and sharing secure files based on blockchain — Fan Kai et al., 2018, Patent [16].  
-  - **Objectives and motivation**: Provide a practical method for encrypted file storage/sharing by recording pointers and access policies on blockchain [16].  
-  - **Methodology and blockchain implementation**: Users encrypt/upload files, obtain file pointer; accounting nodes write access policy and pointer into blockchain account; key distribution after policy satisfaction [16].  
-  - **Key findings and contributions**: Patent describes a ledger‑anchored pointer/ACL model ensuring availability and immutable access policy recording for file sharing [16].  
-  - **Secure transmission and storage**: Encrypted files stored off‑chain; blockchain stores pointers and access policies; PKC is used for secure key exchange and policy enforcement during transmission [16].  
-  - **Limitations mentioned**: Patent text does not present performance metrics or privacy‑enhancing proofs [16].
 
 - **[17]**  
   - **Title authors year venue**: Towards data storage scheme in blockchain based serverless environment: AES approach — Meenakshi Kandpal et al., 2024, Facta universitatis [17].  
