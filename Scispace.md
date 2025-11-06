@@ -25,12 +25,12 @@ This section situates the selected top 20 papers and summarizes their metadata a
 | 13 | hChain: Blockchain Based Large Scale EHR Data Sharing — Musharraf Alruwaill et al. | 2025 | arXiv preprint | Edge + IoMT integration, symmetric/asymmetric encryption, SHA‑256 hashing, smart contracts [13] | https://doi.org/10.48550/arXiv.2505.12610 |
 | 14 | Efficient sensitivity orient blockchain encryption for cloud — A. Siva Kumar et al. | 2021 | Concurrent Engineering | Sensitivity‑aware blockchain encryption scheme (RSFSA) for cloud data [14] | https://doi.org/10.1177/1063293X211008586 |
 | 15 | Secure and Efficient Data Storage and Sharing Scheme Based on Double Blockchain — L. Zhang et al. | (date n/a) | Tech Science / conference | Double‑blockchain architecture, ABE, encrypted EMR off‑chain storage [15] | https://doi.org/10.32604/cmc.2020.012205 |
-| 17 | AES encryption in blockchain serverless storage — Meenakshi Kandpal et al. | 2024 | Facta universitatis | Permissioned blockchain + AES selected for serverless off‑chain encrypted storage [17] |  |
-| 18 | Permissioned blockchain for automotive supply chain — Saima Zafar et al. | 2022 | Sensors | Hyperledger Fabric permissioned ledger for tamper‑proof records with practical evaluation [18] |  |
-| 19 | Blockchain Tree for distributed personal ID data — Sergii Kushch et al. | 2019 | arXiv | Multilevel "Blockchain Tree" with subchains for ID data and access control [19] |  |
-| 20 | Block Chain‑Based Secure Document Sharing — Sai Sandeep N & Magna Yadlapalli | 2025 | Indian J. of Computer Science & Technology | Ethereum + smart contracts + IPFS frontend/backend prototype and smart‑contract ACLs [20] |
+| 17 | Towards data storage scheme in blockchain based serverless environment: AES encryption and decryption algorithm approach — Meenakshi Kandpal et al. | 2024 | Facta universitatis | Permissioned blockchain + AES selected for serverless off‑chain encrypted storage [17] | https://doi.org/10.2298/FUEE2402317K |
+| 18 | Implementation of a Distributed Framework for Permissioned Blockchain-Based Secure Automotive Supply Chain Management — Saima Zafar et al. | 2022 | Sensors | Hyperledger Fabric permissioned ledger for tamper‑proof records with practical evaluation [18] | https://doi.org/10.3390/s22197367 |
+| 19 | Blockchain Tree for distributed personal ID data — Sergii Kushch et al. | 2019 | arXiv | Multilevel "Blockchain Tree" with subchains for ID data and access control [19] | https://doi.org/10.3390/s20133621 |
+| 20 | Block Chain‑Based Secure Document Sharing — Sai Sandeep N & Magna Yadlapalli | 2025 | Indian J. of Computer Science & Technology | Ethereum + smart contracts + IPFS frontend/backend prototype and smart‑contract ACLs [20] | https://www.doi.org/10.59256/indjcst.20250401032 |
 
-Each table row is sourced from the cited paper and reflects the implementation choices and framing in that work [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20].
+Each table row is sourced from the cited paper and reflects the implementation choices and framing in that work [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [17] [18] [19] [20].
 
 ----
 
@@ -241,6 +241,6 @@ Across the surveyed literature, authors commonly report incomplete large‑scale
   - **Interoperability standards and portability layers** — Specify metadata and pointer standards for on‑chain anchoring to enable cross‑system verification and portability across IPFS, cloud, and chains [5] [12].  
   - **Human factors and deployment studies** — Conduct user studies and pilot deployments for consent, usability, and governance to validate prototype claims in [20] [18] [5].
 
-Each gap and recommendation is grounded in the surveyed papers that explicitly identify or imply the need for the change [1] [2] [3] [4] [5] [6] [7] [8] [9] [11] [12] [13] [16] [18] [20].
+Each gap and recommendation is grounded in the surveyed papers that explicitly identify or imply the need for the change [1] [2] [3] [4] [5] [6] [7] [8] [9] [11] [12] [13] [18] [20].
 
 ----
