@@ -55,10 +55,16 @@ bottom=0.75in,
 
 \renewcommand{\contentsname}{Table of Contents}
 \tableofcontents
-\addcontentsline{toc}{chapter}{\numberline{}Table of Contents}
+\addcontentsline{toc}{chapter}{\numberline{}\contentsname}
+
 \listoffigures
-\addcontentsline{toc}{chapter}{\numberline{}List of Figures}
+\addcontentsline{toc}{chapter}{\numberline{}\listfigurename}
+
+% \listoftables
+% \addcontentsline{toc}{chapter}{\numberline{}\listtablename}
+
 \renewcommand{\lstlistlistingname}{List of Code Snippets}
+\addcontentsline{toc}{chapter}{\numberline{}\lstlistlistingname}
 \lstlistoflistings
 \newpage
 
