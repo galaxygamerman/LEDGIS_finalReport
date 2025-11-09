@@ -292,7 +292,30 @@ Several applied research pieces target specialized environments such as space‑
 \noindent
 Collectively, these studies show that blockchain‑anchored document security is feasible across domains (healthcare, cloud storage, legal, government), but recurring gaps remain: large‑scale benchmarking, standardized metadata for portability across storage backends, robust key‑revocation for ABE schemes, and a stronger regulatory mapping (GDPR/HIPAA) for production deployments \cite{file_sharing_2024, abe_cloud_2023, traceability_zkp_2024}.
 
-\par
-\vspace{0.15in}
-\noindent
-To sum up, while the literature clearly highlights blockchain’s ability to bring transparency, security, and trust to governmental and judicial records, many solutions are still theoretical or narrowly focused. Real‑world, scalable applications that cover the full spectrum of legal and government data management are still needed, and that is where our work aims to contribute.
+\subsection{Limitations}
+
+\par \vspace{0.15in} \noindent Based on the comprehensive survey, the limitations of existing work are manifold. Many proposed solutions remain highly theoretical or conceptual, focusing on the strategic potential of blockchain rather than on technical, implementation-specific details~\cite{tapscott, atzori}. Pioneering and well-documented government applications, such as those in Estonia~\cite{estonia} and Georgia~\cite{georgia}, are often narrow in scope. They successfully validate blockchain for specific domains like e-residency or land registry but do not provide comprehensive models for the complex data flows, multi-actor permissions, and stringent evidentiary rules required by the judicial and law enforcement sectors. Furthermore, many academic reviews and frameworks lack specific case studies for law enforcement~\cite{zheng}, fail to tackle the practical challenges of integration with legacy government infrastructure~\cite{liu}, or have not been empirically validated through live, integrated deployments~\cite{tan2021}.
+
+\subsection{Research Gaps identified}
+
+\par \vspace{0.15in} \noindent The identified limitations in the current literature point to a critical and persistent research gap: the need for a holistic, scalable, and empirically-validated framework engineered specifically for the legal and law enforcement domains. There is a distinct lack of solutions tailored for the unique forensic chain-of-custody rules and the complex, multi-actor access policies required by the judicial system (e.g., involving judges, prosecutors, defense attorneys, and forensic labs). A significant gap also exists in addressing the scalability challenge of storing large evidence files—such as high-definition video, audio recordings, or detailed forensic images—without compromising the integrity and performance of the blockchain ledger. Finally, while many systems demonstrate components like IPFS integration~\cite{naz2019, ullah2022} or Hyperledger Fabric use~\cite{sonkamble2023, zafar2022}, a complete, end-to-end system that integrates these components with domain-specific smart contracts and provides quantitative performance analysis is still needed.
+
+\section{Contributions of this Project Work}
+
+\par \vspace{0.15in} \noindent 
+This project work titled "LEDGIS" addresses key challenges in the secure management of digital evidence and government records. It presents the design, implementation, and validation of a complete end-to-end framework using Hyperledger Fabric and IPFS to ensure both functional accuracy and scalability.
+
+\par \vspace{0.1in} \noindent 
+A major contribution of this work is the development and validation of a hybrid on-chain and off-chain architecture. In this model, lightweight and immutable metadata such as file hashes, AES encryption keys, initialization vectors, and IPFS content identifiers are stored on the Hyperledger Fabric ledger, while the large encrypted evidence files are stored off-chain in the IPFS network. This design improves scalability while maintaining verifiable data integrity.
+
+\par \vspace{0.1in} \noindent 
+Another contribution is the creation of domain-specific cryptographic pipelines designed for forensic use. Two complete pipelines were implemented and tested: the Evidence Upload Pipeline, which performs hashing, encryption, chunking, and storage on IPFS with metadata registration on the blockchain, and the Evidence Retrieval Pipeline, which reconstructs and decrypts data while verifying integrity through hash comparison. These pipelines ensure confidentiality and proof of integrity throughout the evidence lifecycle.
+
+\par \vspace{0.1in} \noindent 
+The project also introduces purpose-built smart contracts that automate legal and forensic workflows. Functions such as storeEvidence and getEvidence support the digital chain-of-custody and enforce evidence management logic within the blockchain network.
+
+\par \vspace{0.1in} \noindent 
+An integrated access control mechanism has been implemented using a role-based model at the backend API layer, which serves as a secure gateway to the permissioned blockchain. This ensures that only authorized users within the judicial and law enforcement ecosystem can perform specific operations, reflecting the real-world nature of forensic evidence management.
+
+\par \vspace{0.1in} \noindent 
+Finally, the project provides empirical performance validation through detailed testing and benchmarking. Quantitative evaluations of API latency, transaction throughput, and user load, as discussed in Chapter 6, demonstrate predictable performance and practical scalability. These results confirm the system’s feasibility for real-world deployment within legal and government domains.

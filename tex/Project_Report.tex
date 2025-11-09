@@ -10,7 +10,35 @@
 \linespread{1.4}
 \usepackage{geometry}
 \usepackage{float}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{xcolor}
 \usepackage{hyperref}
+\lstdefinelanguage{JavaScript}{
+    morekeywords={typeof, new, true, false, catch, function, return, null, catch, switch, const, var, let, if, in, while, do, else, case, break, for},
+    morecomment=[s]{/*}{*/},
+    morecomment=[l]//,
+    morestring=[b]",
+    morestring=[b]'
+}
+\lstdefinestyle{ledgisjs}{
+    showstringspaces=false,
+    language=JavaScript,
+    backgroundcolor=\color{gray!10}, % Light gray background
+    commentstyle=\color{purple}\itshape, % Italic purple comments
+    keywordstyle=\color{blue}\bfseries\itshape, % Bold keywords
+    stringstyle=\color{orange}, % Orange strings
+    basicstyle=\footnotesize\ttfamily, % Small monospace font for basic text
+    numbers=left, % Line numbers on the left
+    numberstyle=\tiny\color{gray}, % Tiny gray line numbers
+    frame=single, % Single frame around the listing
+    breaklines=true, % Enable line breaking
+    captionpos=b, % Caption at the bottom
+    tabsize=4 % Tab size of 4 spaces
+}
+\lstset{
+    style=ledgisjs
+}
 \geometry{
 a4paper,
 total={210mm,297mm},
@@ -30,6 +58,9 @@ bottom=0.75in,
 \addcontentsline{toc}{chapter}{\numberline{}Table of Contents}
 \listoffigures
 \addcontentsline{toc}{chapter}{\numberline{}List of Figures}
+\renewcommand{\lstlistlistingname}{List of Code Snippets}
+\lstlistoflistings
+\newpage
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -48,8 +79,6 @@ bottom=0.75in,
 \include{tex/4_softwareReqs}
 \include{tex/5_systemDesign}
 \include{tex/6_results}
-\include{tex/7_plan}
 \include{tex/8_conclusion}
 \include{tex/9_references}
-
 \end{document}

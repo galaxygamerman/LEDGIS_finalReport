@@ -1,9 +1,48 @@
-\chapter{Conclusion}
+\chapter{Conclusion and Future Work}
 
-Managing legal and law enforcement records in a secure and trustworthy way is one of the biggest challenges faced by modern governments. Traditional centralized systems often fall short—they’re vulnerable to tampering, hard to audit, and can slow down critical processes due to manual interventions. This project set out to explore a better alternative, using blockchain technology as the foundation for a more transparent and efficient approach.
+This final chapter summarizes the overall findings of the project, evaluates how well the objectives were achieved, and presents a practical roadmap for future improvements. It also reflects on the lessons learned during the design and implementation of the LEDGIS framework and outlines ways to make the system more secure, efficient, and suitable for real-world use.
 
-\noindent By using Hyperledger Fabric, we built a system that not only protects the integrity of legal records but also brings in automation through smart contracts. This means tasks like verifying evidence or issuing warrants can happen faster, more securely, and with fewer chances of human error. We also introduced role-based access and audit logs to ensure that only authorized users can access sensitive information—and that every action is traceable.
+\section{Conclusion}
 
-\noindent Our approach blends on-chain verification with off-chain storage to balance scalability and performance, making it practical for real-world use in government settings. More importantly, it creates a system that citizens and officials can trust—one where data is tamper-proof and accessible when needed.
+\subsection{Summary of Findings}
 
-\noindent In short, this project demonstrates how blockchain isn’t just a buzzword—it can play a meaningful role in transforming how governments manage and protect some of their most important data. With continued development and support, systems like these could become a cornerstone of future public infrastructure.
+This project aimed to address the challenge of securing government and law enforcement records by developing a blockchain-based framework named LEDGIS. Through the design and implementation of this system, the project demonstrated that combining a permissioned blockchain (Hyperledger Fabric) for metadata and consensus with decentralized off-chain storage (IPFS) for encrypted data provides a secure and scalable solution.
+
+Two main findings were established. First, the system ensures strong security and data integrity. It maintains a tamper-proof ledger of all evidence metadata, creating a verifiable and auditable chain of custody for legal and forensic use. Second, the hybrid architecture successfully solves the scalability problem that affects many blockchain applications. Performance tests showed that the system scales in a predictable and linear manner with file size, proving that it can handle large digital evidence files without being limited by blockchain transaction overhead.
+
+\subsection{Significance and Contribution of the LEDGIS Framework}
+
+The project demonstrates that blockchain technology can be applied in a meaningful and practical way to improve digital governance and evidence management. The main contribution of this work is a working prototype that connects theoretical blockchain ideas with the practical requirements of real-world government systems. By validating the hybrid on-chain and off-chain approach, the project provides a clear architectural model that balances cryptographic security with operational scalability. This fills an important gap that was identified in many existing studies, where systems were often either secure but slow, or scalable but less verifiable.
+
+\subsection{Final Remarks on Project Objectives}
+
+All the main objectives outlined at the beginning of the project were successfully achieved. A Hyperledger Fabric-based system was implemented to securely manage digital records. A hybrid processing pipeline was developed to hash and encrypt files, store them off-chain, and verify them through blockchain metadata. Smart contracts were written to automate the registration and validation of digital evidence. Role-based access control was integrated at the backend level, ensuring only authorized users could access or modify records. Finally, extensive testing and performance benchmarking were conducted to analyze scalability and identify limitations, which now form the foundation for future improvements.
+
+\section{Future Enhancements}
+
+The current LEDGIS system functions as a working proof-of-concept. However, several areas have been identified for improvement to make it production-ready and capable of supporting real-world deployment. The following subsections describe key directions for future development.
+
+\subsection{Architectural Enhancements: On-Chain Access Control}
+
+One of the main limitations of the current prototype is that access control is handled by a centralized backend, which introduces a single point of trust. A future version of LEDGIS should move this logic to the blockchain itself by implementing an Attribute-Based Access Control (ABAC) model within the chaincode.
+
+In this approach, the Hyperledger Fabric Certificate Authority would issue digital certificates containing user-specific attributes such as role, department, and clearance level. The smart contract functions, such as getEvidence, would then verify these attributes directly before allowing access to sensitive records. New chaincode functions like setAccessPolicy could allow administrators to define and store fine-grained access policies on the ledger, ensuring that permissions are enforced transparently and immutably. This change would eliminate the need to trust a central server and make access control entirely decentralized.
+
+\subsection{Performance and Scalability Improvements}
+
+Performance testing revealed some bottlenecks in the current system, especially in reading and writing large files. To improve scalability, the backend server can be deployed in a containerized environment and scaled horizontally using a load balancer or Kubernetes cluster. This would distribute decryption and file reconstruction tasks across multiple nodes, improving throughput during evidence retrieval.
+
+For write operations, additional testing should be conducted to measure performance under heavy concurrent uploads. The system’s transaction throughput can be improved by tuning Hyperledger Fabric’s block creation parameters, such as BatchTimeout and MaxMessageCount, and by batching multiple metadata transactions into a single block. To reduce latency, a caching layer such as Redis could be introduced to temporarily store frequently accessed metadata, improving response times for end users.
+
+\subsection{Advanced Cryptography and Privacy Preservation}
+
+The current system stores AES encryption keys in plaintext form on the blockchain, which poses a potential security risk. Future versions should replace this with a more advanced encryption method such as Proxy Re-Encryption (PRE). This technique allows encrypted files to be securely shared between authorized users without ever exposing the actual encryption key.
+
+For example, a police officer could encrypt a file with a secret key and then encrypt that key with their public key before storing it on the ledger. When a judge needs access, a special re-encryption key can be used to transform the encrypted key so that only the judge can decrypt it. At no point is the actual encryption key exposed to the network. This approach allows secure and revocable access control, ensuring privacy while maintaining auditability. In future, searchable encryption could also be integrated to allow users to search encrypted data without revealing their search terms.
+
+\subsection{System Interoperability and Governance}
+
+For the system to be useful in real-world government settings, it must be capable of integrating with other platforms. Future work should focus on developing a standardized API that enables LEDGIS to connect with existing systems such as digital court records, police databases, or e-FIR portals. To support inter-blockchain communication, frameworks like Hyperledger Cactus could be used to exchange verification data with other government blockchain networks, such as those managing land or identity records.
+
+Additionally, governance mechanisms should be introduced to manage the network itself. A separate governance chaincode could handle the process of adding new organizations or courthouses to the network, managing membership policies, and maintaining version control for system updates. This would make the system self-regulating and suitable for deployment across multiple agencies.
+
