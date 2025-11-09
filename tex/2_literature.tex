@@ -250,4 +250,40 @@ Sai Sandeep \& Yadlapalli~\cite{sai2025} prototyped an Ethereum + IPFS document 
 \par
 \vspace{0.15in}
 \noindent
-To sum up, while the literature clearly highlights blockchain’s ability to bring transparency, security, and trust to governmental and judicial records, many solutions are still theoretical or narrowly focused. Real-world, scalable applications that cover the full spectrum of legal and government data management are still needed, and that is where our work aims to contribute.
+
+Building on the works listed in our references, there is a substantial body of research addressing cloud storage and file‑sharing systems that complement government and judicial record management. Several recent studies propose blockchain‑backed frameworks to secure decentralized file sharing, integrating distributed storage protocols and access control primitives to reduce tamper risk and central points of failure \cite{file_sharing_2024, bbfs, decentralized_cloud_2024}.
+
+\par
+\vspace{0.15in}
+\noindent
+Practical implementations explore combinations of blockchain with IPFS or cloud backends and evaluate encryption strategies and revocation mechanisms. For example, attribute‑based encryption integrated with smart contracts supports fine‑grained access and fast revocation in cloud file sharing scenarios \cite{abe_cloud_2023}, while serverless and cost‑efficient designs examine tradeoffs between confidentiality, latency, and operational cost \cite{decentralized_cloud_2024, healthcare_framework_2024}.
+
+\par
+\vspace{0.15in}
+\noindent
+The legal and government literature highlights industry and case‑study contributions showing how blockchain improves notarization, public records, and identity verification workflows. Technical whitepapers and industry reports detail notarization platforms, document signing services, and public‑sector pilots that demonstrate immutable audit trails and streamlined verification processes \cite{powerpatent2023, zircon_revolution_2024, deltec_legal_2024, corposign2023, blockapps2024}.
+
+\par
+\vspace{0.15in}
+\noindent
+Specialized document verification systems such as Blockcerts illustrate applied architectures for issuing verifiable credentials and certificates at scale, offering practical patterns for government‑grade certification and diploma verification \cite{blockcerts}. These systems often combine on‑chain anchors with off‑chain storage and notarization APIs to balance performance and legal evidentiary needs \cite{blockcerts, blockchain_wrapper_2019}.
+
+\par
+\vspace{0.15in}
+\noindent
+On the cryptographic and protocol side, survey papers and conference works review how blockchain can be combined with advanced privacy techniques — including proxy re‑encryption, zero‑knowledge proofs, and provenance mechanisms — to protect data provenance and cross‑border identity management \cite{crypto_protocols_survey_2024, proxy_reencryption_2024, traceability_zkp_2024, distributed_id_crossborder_2023}. These contributions identify concrete building blocks for privacy‑preserving, auditable document sharing across institutional boundaries.
+
+\par
+\vspace{0.15in}
+\noindent
+Several applied research pieces target specialized environments such as space‑air‑ground integrated networks (SAGIN) and IoT, demonstrating decentralized secure communication protocols tailored for high‑latency or resource‑constrained settings \cite{sagin_iot_2024}. Broader surveys catalog privacy‑focused blockchain applications and point to open problems in scalability, formal privacy guarantees, and interoperability \cite{privacy_apps_survey_2024}.
+
+\par
+\vspace{0.15in}
+\noindent
+Collectively, these studies show that blockchain‑anchored document security is feasible across domains (healthcare, cloud storage, legal, government), but recurring gaps remain: large‑scale benchmarking, standardized metadata for portability across storage backends, robust key‑revocation for ABE schemes, and a stronger regulatory mapping (GDPR/HIPAA) for production deployments \cite{file_sharing_2024, abe_cloud_2023, traceability_zkp_2024}.
+
+\par
+\vspace{0.15in}
+\noindent
+To sum up, while the literature clearly highlights blockchain’s ability to bring transparency, security, and trust to governmental and judicial records, many solutions are still theoretical or narrowly focused. Real‑world, scalable applications that cover the full spectrum of legal and government data management are still needed, and that is where our work aims to contribute.
