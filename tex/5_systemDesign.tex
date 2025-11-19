@@ -470,7 +470,7 @@ The former records encrypted evidence metadata into the blockchain ledger, while
 
 The code below represents the complete implementation used within the LEDGIS network.
 
-\begin{lstlisting}[language=JavaScript,caption={EvidenceContract chaincode for storing and retrieving evidence metadata}]
+\begin{lstlisting}[style=ledgisjs,caption={EvidenceContract chaincode for storing and retrieving evidence metadata}]
 'use strict';
 const { Contract } = require('fabric-contract-api');
 class EvidenceContract extends Contract {
@@ -505,7 +505,7 @@ This design isolates blockchain complexity from the frontend while enforcing aut
 
 The \texttt{submissioncontroller.js} file defines an asynchronous helper function \texttt{subToFabric()}, which connects to the Fabric network, submits chaincode transactions, and returns the result to the API endpoint.
 
-\begin{lstlisting}[language=JavaScript,caption={Backend submission controller for interacting with Hyperledger Fabric}]
+\begin{lstlisting}[style=ledgisjs,caption={Backend submission controller for interacting with Hyperledger Fabric}]
 const { Gateway, Wallets } = require('fabric-network'); 
 const fs = require('fs');
 const path = require('path');
