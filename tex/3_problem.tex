@@ -18,3 +18,51 @@ The proposed project aims to address these issues by leveraging blockchain techn
     \item Apply role-based access control and maintain audit logs for all actions within the system.
     \item Assess scalability, legal compliance, and integration with existing government systems.
 \end{itemize}
+
+\section{Functional Requirements}
+\begin{itemize}
+    \item \textbf{Secure Record Creation:} The system must allow authorized government officials to create and upload legal records securely onto the blockchain.
+    
+    \item \textbf{Smart Contract Execution:} The system must support smart contracts for automating document approval, verification, and transfer of ownership.
+    
+    \item \textbf{Tamper-Proof Record Storage:} The system must ensure that once a record is written to the blockchain, it cannot be modified without consensus.
+    
+    \item \textbf{User Access Management:} The system must offer role-based access, allowing different levels of interaction for law enforcement, judicial staff, and public users.
+    
+    \item \textbf{Audit Trail Generation:} The system must generate immutable logs of all transactions for verification and legal traceability.
+\end{itemize}
+
+\section{Non-Functional Requirements}
+\begin{itemize}
+    \item \textbf{Security and Privacy:} The system must implement end-to-end encryption and comply with data protection policies applicable to legal records.
+
+    \item \textbf{Performance:} Blockchain transactions (e.g., record uploads and retrieval) must be processed within seconds to ensure practical usability.
+
+    \item \textbf{Scalability:} The system must support increasing volumes of legal data, users, and transactions, and scale effectively across multiple government departments or jurisdictions.
+
+    \item \textbf{Availability:} The system should have high availability to ensure 24/7 access to legal data, particularly for law enforcement and judiciary needs.
+
+    \item \textbf{Maintainability:} The codebase and infrastructure must be modular and well-documented to support updates, patching, and integration with legacy systems.
+
+    \item \textbf{Interoperability:} The solution must support integration with existing digital case management systems, e-governance portals, and authentication services.
+\end{itemize}
+
+\section{Software and Tools}
+
+\begin{itemize}
+    \item \textbf{Hyperledger Fabric (v2.5):} Used to build a permissioned blockchain network with support for modular components such as consensus and membership services.
+
+    \item \textbf{JavaScript (Node.js v18+):} Serves as the primary programming language for developing backend logic, writing chaincode, and integrating with the Hyperledger SDK.
+
+    \item \textbf{Docker:} Used to containerize network components including peers, orderers, and certificate authorities, ensuring consistency and ease of deployment.
+
+    \item \textbf{fabric-sdk-node / fabric-ca-client / fabric-contract-api:} These Hyperledger Fabric libraries enable client-side interactions with the blockchain network, handle user enrollment and identity management, and define smart contract APIs.
+
+    \item \textbf{ExpressJS / NextJS:} ExpressJS is used to build the RESTful backend APIs while NextJS powers the frontend interface with server-side rendering capabilities.
+
+    \item \textbf{crypto-js:} Provides cryptographic functions such as hashing and AES encryption to ensure data integrity and confidentiality.
+
+    \item \textbf{CouchDB (v3.2):} Acts as the state database for storing the current world state of the blockchain ledger, enabling efficient querying and indexing of chaincode data.
+
+    \item \textbf{Encrypted File Storage (e.g., IPFS / Local Vaults):} Supports off-chain document storage for large or non-transactional data while preserving immutability and auditability.
+\end{itemize}
