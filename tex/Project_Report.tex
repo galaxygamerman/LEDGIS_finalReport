@@ -51,14 +51,25 @@ bottom=0.75in,
 }
 \emergencystretch 4em
 
-\usepackage{moresize}
 \usepackage{titlesec}
-\titleformat{\chapter}
-{\centering\Huge\bfseries} % format
-{\thechapter.} % label
-{0.5em} % sep
-{} % before-code
-{} % after-code
+% Chapter & Section (Heading) -> 16pt
+\titleformat{\chapter}[display]
+  {\bfseries\fontsize{18}{19.2}\selectfont\centering} % 16pt font, Bold
+  {\MakeUppercase{\chaptertitlename}\ \thechapter}
+  {20pt}
+  {\bfseries\fontsize{18}{19.2}\selectfont\MakeUppercase}
+\titleformat{\section}
+  {\bfseries\fontsize{14}{19.2}\selectfont} % 16pt font, Bold
+  {\thesection}
+  {1em}
+  {}
+
+% Subsection (Subheading) -> 14pt
+\titleformat{\subsection}
+  {\bfseries\fontsize{12}{16.8}\selectfont} % 14pt font, Bold
+  {\thesubsection}
+  {1em}
+  {}
 
 \begin{document}
 \include{tex/0_1_coverpage}
