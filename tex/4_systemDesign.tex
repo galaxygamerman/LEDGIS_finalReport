@@ -1,0 +1,545 @@
+\chapter{Project Design and Implementation}
+\section{Architecture Diagram}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{fig/arc.png} % replace with your image filename
+    \caption{ Component-Based Architecture for Legal Blockchain Application}
+    \label{fig:architecture}
+\end{figure}
+
+\vspace{0.5em}
+
+\noindent The diagram illustrates the Component-Based Architecture for the legal blockchain application, structured into four primary layers: Security, Core System, Client, and Data. The Security Layer ensures data protection and controlled access through identity management and encryption services. It acts as the foundational safeguard for sensitive government and law enforcement data. The Core System Layer manages the essential blockchain operations, including business logic, smart contract execution, consensus mechanisms, and maintenance of the distributed ledger. Together, these elements establish the system’s integrity and reliability.
+
+\noindent The Client Layer provides interaction points for users and external systems through user interfaces and API gateways, ensuring smooth communication between the blockchain network and client applications. Finally, the Data Layer handles persistent data management with two key components: the on-chain State Database for structured records and Off-Chain Storage for large legal or forensic files. This modular design supports scalability, efficient resource management, and secure data handling, making it suitable for government and law enforcement record management systems.
+\section{Use Case Diagram}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{fig/usecase.png}
+    \captionsetup{justification=centering}
+    \caption{Use Case Diagram showing the interaction between users, backend server and the ledger.}
+    \label{fig:use_case_diagram}
+\end{figure}
+
+This diagram illustrates the various actors and use cases in the system. End users can request access to legal records, view approved documents, and track the status of their requests. Administrators manage permissions and oversee approval workflows, while government agencies are responsible for uploading verified documents and auditing smart contract logs. The structure ensures transparency, accountability, and controlled access to sensitive data using blockchain technology.
+\newpage
+\section{Data Flow Diagrams}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.75\textwidth]{fig/level0_df.png}
+    \caption{Level 0 Data Flow Diagram: Overview of the evidence capture and storage system}
+    \label{fig:level0df}
+\end{figure}
+
+\noindent The Level 0 Data Flow Diagram provides a high-level overview of the system. It illustrates the basic interaction between users, the evidence capture mechanism, and the backend services responsible for storage and verification. The user submits evidence through a trusted interface, which is then securely processed and stored using blockchain and distributed storage technologies to ensure data integrity and immutability.
+
+\vspace{2em}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fig/level1_df.png}
+    \caption{Level 1 Data Flow Diagram: Breakdown of subsystems involved in evidence processing}
+    \label{fig:level1df}
+\end{figure}
+
+\noindent The Level 1 Data Flow Diagram expands the high-level architecture into distinct subsystems: evidence acquisition, preprocessing, and secure storage. Evidence is collected using a specialised capture device and temporarily stored. It then undergoes digital signing and watermarking before being transferred to the backend. The backend handles communication with IPFS for storing encrypted file chunks and with the Hyperledger Fabric ledger for recording metadata.
+
+\vspace{2em}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1\textwidth]{fig/level2_df.png}
+    \caption{Level 2 Data Flow Diagram: Detailed internal flow of hashing, encryption, and metadata storage}
+    \label{fig:level2df}
+\end{figure}
+
+\noindent The Level 2 Data Flow Diagram details the internal flow of evidence processing. After capture and preprocessing, the evidence is hashed using SHA-256, encrypted using AES with a unique key and IV, and then split into multiple chunks. These chunks are uploaded to IPFS, and their content identifiers (CIDs) are collected. A metadata object containing the file hash, AES key, IV, and chunk CIDs is created and stored on a Hyperledger ledger. This layered approach ensures traceability, tamper-evidence, and secure retrieval through REST-based queries and backend logic.
+
+
+\section{Class Diagram}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{fig/class_diag.png} % Replace with the actual new path if updated
+    \captionsetup{justification=centering}
+    \caption{Class diagram illustrating the modular design of a blockchain-enabled access control system for cloud services.}
+    \label{fig:class-diagram}
+\end{figure}
+
+This class diagram demonstrates the object-oriented architecture of a secure access control system built using blockchain technology. The system is composed of the following major components:
+
+\begin{itemize}
+    \item \textbf{User:} Represents individuals attempting to access cloud resources. Attributes include \texttt{userID}, \texttt{name}, and \texttt{role}. Methods like \texttt{login()} and \texttt{requestAccess()} initiate interaction with the system.
+    
+    \item \textbf{AccessControlService:} Core service class responsible for verifying user credentials and checking resource permissions using the \texttt{verifyCredentials()} and \texttt{checkPermissions()} methods.
+    
+    \item \textbf{PermissionLedger:} Stores user permissions in a map structure and provides the method \texttt{getPermissions()} to retrieve access rights based on userID.
+    
+    \item \textbf{SmartContract:} Encapsulates blockchain logic for validating access (\texttt{validateAccess()}) and executing rules (\texttt{executeAccessRule()}). Operates autonomously on the blockchain.
+    
+    \item \textbf{BlockchainNode:} Responsible for recording validated access requests using \texttt{storeTransaction()} and ensuring data consistency through \texttt{validateBlock()}.
+    
+    \item \textbf{CloudResource:} Represents resources such as storage, compute, or database services. Grants access via \texttt{grantAccess()} and stores resource identifiers.
+    
+    \item \textbf{StorageService, ComputeService, DatabaseService:} Subclasses of CloudResource, each supporting domain-specific methods:
+    \begin{itemize}
+        \item \texttt{StorageService:} \texttt{saveData()}, \texttt{retrieveData()}
+        \item \texttt{ComputeService:} \texttt{runProcess()}, \texttt{allocateResources()}
+        \item \texttt{DatabaseService:} \texttt{queryData()}, \texttt{updateRecord()}
+    \end{itemize}
+\end{itemize}
+The modular design enables clear separation of concerns, where user interactions, access validation, blockchain transaction management, and resource provisioning are handled independently. This architecture ensures scalability, auditability, and security in managing resource access in a distributed cloud environment.
+
+
+\section{Sequence Diagram}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{fig/seq.png} % Replace with your actual path
+    \captionsetup{justification=centering}
+    \caption{Sequence diagram demonstrating the request-response workflow from the user to the blockchain network and cloud services.}
+    \label{fig:sequence-diagram}
+\end{figure}
+
+This sequence diagram illustrates the step-by-step flow of operations when a user attempts to access a protected resource. The request is first verified by the access control service, which then checks permissions and engages smart contracts on the blockchain for validation. Upon approval, the user is granted access to the requested cloud-based resource. This ensures all access activities are secure, traceable, and compliant with system policies.
+
+\section{Processing Pipelines}
+
+The LEDGIS system relies on two primary processing pipelines that work together to ensure every digital evidence file is stored, verified, and retrieved with complete security and transparency. These pipelines combine cryptography, distributed storage, and blockchain immutability to maintain both trust and accessibility in handling sensitive legal data.
+
+\subsection{Evidence Upload and Secure Storage Pipeline}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth,height=0.6\textheight]{fig/pipe1.png}
+    \captionsetup{justification=centering}
+    \caption{Evidence Upload and Secure Storage Pipeline}
+    \label{fig:upload-pipeline}
+\end{figure}
+
+When a user uploads a new piece of evidence, the system immediately initiates a secure end-to-end process to protect and register it. The workflow proceeds as follows:
+
+\begin{enumerate}
+    \item \textbf{Hashing the File:} The uploaded file is hashed using the SHA-256 algorithm. This hash acts as a unique digital fingerprint — even the slightest change in the file would produce a completely different hash, making tampering easily detectable.
+    
+    \item \textbf{Generating Encryption Keys:} A random AES-256 encryption key and a 128-bit initialization vector (IV) are generated for each upload. These values are never reused, ensuring strong protection for every individual file.
+    
+    \item \textbf{Encrypting the Evidence:} The file is then encrypted using AES-256 in CBC mode. This step ensures that even if someone gains access to the storage layer, they cannot view or interpret the content without the correct key and IV.
+    
+    \item \textbf{Chunking and IPFS Upload:} The encrypted file is split into 1 MB chunks and uploaded to the IPFS (InterPlanetary File System) network. IPFS returns a set of unique content identifiers (CIDs), which serve as permanent references to each chunk across the distributed network.
+    
+    \item \textbf{Recording Metadata on Blockchain:} Finally, a metadata object containing the file’s hash, AES key, IV, and list of CIDs is created. This metadata is stored on the Hyperledger Fabric ledger, ensuring an immutable and verifiable record of the evidence.
+\end{enumerate}
+
+This pipeline guarantees that every uploaded file is encrypted, traceable, and permanently verifiable without ever compromising user privacy. The blockchain serves as the trust anchor, while IPFS provides efficient, decentralized storage.
+
+\vspace{1.5em}
+
+\subsection{Evidence Retrieval and Verification Pipeline}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth,height=0.9\textheight]{fig/pipe2.png} %
+    \captionsetup{justification=centering}
+    \caption{Evidence Retrieval and Verification Pipeline}
+    \label{fig:retrieval-pipeline}
+\end{figure}
+
+When an authorized user requests access to a stored file, the system activates a second pipeline that focuses on secure retrieval and authenticity verification. The process unfolds as follows:
+
+\begin{enumerate}
+    \item \textbf{Fetching Metadata:} The system queries the Hyperledger Fabric ledger to retrieve the stored metadata, which includes the file’s original hash, encryption key, IV, and list of IPFS chunk identifiers.
+    
+    \item \textbf{Reconstructing the File:} Using the CIDs, the system locates and fetches the encrypted chunks from the IPFS network. The chunks are combined in sequence to reconstruct the original encrypted file.
+    
+    \item \textbf{Decrypting the File:} The AES key and IV from the metadata are used to decrypt the reconstructed file, restoring it to its original form exactly as it was uploaded.
+    
+    \item \textbf{Verifying Integrity:} A new SHA-256 hash is computed on the decrypted file and compared against the original hash from the ledger. If they match, the system confirms that the file has not been altered in any way since it was first stored.
+    
+    \item \textbf{Providing Temporary Access:} Once verified, the system generates a secure, time-limited download link that remains valid for only five minutes. This ensures evidence can be accessed conveniently, but never stays exposed beyond necessity.
+\end{enumerate}
+
+This retrieval pipeline not only confirms that a file is authentic and untampered but also enforces strong access control and privacy. It enables authorized parties to verify digital evidence with complete confidence without ever needing to trust a single centralized entity.
+
+\vspace{1em}
+
+\noindent
+Together, these two pipelines form the operational core of LEDGIS. They ensure that every interaction with digital evidence from submission to retrieval remains secure, verifiable, and fully auditable, reflecting the project’s goal of bringing trust and transparency to digital legal processes.
+\subsection{Utility Methods}
+
+The following utility modules provide the core file-processing primitives used by the LEDGIS pipelines: chunking and reconstruction (IPFS), encryption/decryption (AES-256-CBC), and hashing/verification (SHA-256). Each listing below is included verbatim from the implementation and is followed by a short explanation and usage notes.
+
+\begin{lstlisting}[style=ledgisjs,caption={Chunking and reconstruction utilities (IPFS integration)}]
+const fs = require('fs');
+const path = require('path');
+const fse = require('fs-extra');
+const {create}=require("ipfs-http-client")
+const ipfs=create({ url: process.env.ipfsURL });
+async function chunkFile(fileHash,filePath, chunkSizeMB, outputDir) {
+    const chunkSize = chunkSizeMB * 1024 * 1024;
+    const fileStream = fs.createReadStream(filePath, { highWaterMark: chunkSize });
+    const chunkCIDs=[]
+    let part=0;
+    for await(const chunk of fileStream) {
+        const result=await ipfs.add(chunk,{pin:true,rawLeaves:true});
+        chunkCIDs.push({index: part,cid:result.cid.toString(),size:chunk.length});
+        part++;
+    }
+    console.log(`${part} chunks added to IPFS`)
+    console.log(chunkCIDs)
+    return chunkCIDs;
+}
+async function reconFile(chunkCIDs, outputFilePath) {
+    const writeStream = fs.createWriteStream(outputFilePath);
+    chunkCIDs.sort((a,b)=>a.index-b.index)
+    for(const chunks of chunkCIDs){
+        const {cid}=chunks
+        for await(const chunk of ipfs.cat(cid)){
+            writeStream.write(chunk);
+        }
+    }
+    writeStream.end();
+    return new Promise((resolve)=>{
+    writeStream.on('finish',()=>{
+        console.log(`Chunks combined into: ${outputFilePath}`);
+        resolve(outputFilePath);
+    });
+})}
+module.exports={chunkFile,reconFile,ipfs};
+\end{lstlisting}
+
+\noindent\textbf{Explanation — Chunking and Reconstruction}
+
+\begin{itemize}
+  \item \texttt{ipfs}: an \texttt{ipfs-http-client} instance created from \texttt{process.env.ipfsURL}. The environment variable must point to a reachable IPFS API endpoint (for example, \texttt{http://127.0.0.1:5001} in dev).
+  \item \texttt{chunkFile(fileHash, filePath, chunkSizeMB, outputDir)}: reads the target file as a stream and splits it into chunks of size \texttt{chunkSizeMB} megabytes. For each chunk it calls \texttt{ipfs.add(..., \{pin:true, rawLeaves:true\})} and collects an array of objects \{\texttt{index, cid, size}\}. The function returns this \texttt{chunkCIDs} array which is meant to be stored in metadata (for example, on-chain).
+  \item \texttt{reconFile(chunkCIDs, outputFilePath)}: takes the saved \texttt{chunkCIDs} (an array with indices and CIDs), sorts it by index, iterates over each CID and streams the chunk data back from IPFS using \texttt{ipfs.cat(cid)}. It writes each chunk in order to a file at \texttt{outputFilePath} and resolves with that path once the write stream finishes.
+  \item \textbf{Usage notes:} Ensure \texttt{process.env.ipfsURL} is set and the IPFS daemon or gateway allows API calls. The functions stream data to avoid loading entire files into memory, so they are suitable for large evidence files. The returned \texttt{chunkCIDs} array is the canonical mapping you should include in the blockchain metadata so files can be reconstructed deterministically.
+\end{itemize}
+
+\vspace{0.8em}
+
+\begin{lstlisting}[style=ledgisjs,caption={Encryption utilities (AES-256-CBC)}]
+const crypto = require('crypto');
+const fs = require('fs');
+const algorithm = 'aes-256-cbc';
+const key = crypto.randomBytes(32);
+const iv = crypto.randomBytes(16);
+const { pipeline } = require('stream/promises');
+function encryptFile(inputPath, outputPath) {
+    const cipher = crypto.createCipheriv(algorithm, key, iv);
+    const input = fs.createReadStream(inputPath);
+    const output = fs.createWriteStream(outputPath);
+
+    return new Promise((resolve, reject) => {
+        input.pipe(cipher).pipe(output)
+            .on('finish', () => resolve({ key, iv }))
+            .on('error', reject);
+    });
+}
+async function decryptFile(inputPath, outputPath, keyHex, ivHex) {
+    const key = Buffer.from(keyHex, 'hex');
+    const iv = Buffer.from(ivHex, 'hex');
+    const decipher = crypto.createDecipheriv('aes-256-cbc', key, iv);
+    try{await pipeline(fs.createReadStream(inputPath),decipher,fs.createWriteStream(outputPath));}
+    catch(err){
+        console.log(err)
+    }
+}
+
+
+module.exports = { encryptFile,decryptFile, key, iv };
+\end{lstlisting}
+
+\noindent\textbf{Explanation — Encryption / Decryption}
+
+\begin{itemize}
+  \item \texttt{algorithm, key, iv}: the module uses AES-256-CBC. \texttt{key} and \texttt{iv} are generated at module load using \texttt{crypto.randomBytes}. 
+  \item \texttt{encryptFile(inputPath, outputPath)}: creates a cipher stream and pipes the input file through it into the output file. The returned promise resolves with an object \{\texttt{key, iv}\} (Buffers) once the encrypted file is written.
+  \item \texttt{decryptFile(inputPath, outputPath, keyHex, ivHex)}: accepts hex-encoded key and IV strings, converts them to Buffers, and uses a decipher stream to restore the plaintext file into \texttt{outputPath}. It uses \texttt{stream/promises.pipeline} to handle backpressure and streaming errors.
+\end{itemize}
+
+\vspace{-1em}
+
+\begin{lstlisting}[style=ledgisjs,caption={Hashing utilities (SHA-256)}]
+const crypto = require('crypto');
+const fs = require('fs');
+
+function hashFile(filePath) {
+    return new Promise((resolve, reject) => {
+        const hash = crypto.createHash('sha256');
+        const stream = fs.createReadStream(filePath);
+        stream.on('data', data => hash.update(data));
+        stream.on('end', () => resolve(hash.digest('hex')));
+        stream.on('error', reject);
+    });
+}
+
+async function verifyHash(filePath, expectedHash) {
+    const hash = crypto.createHash('sha256');
+    const fileBuffer = fs.readFileSync(filePath);
+    hash.update(fileBuffer);
+
+    const calculatedHash = hash.digest('hex');
+    if (calculatedHash === expectedHash) return true;
+    return false;
+}
+
+
+module.exports = {hashFile,verifyHash};
+\end{lstlisting}
+
+\noindent\textbf{Explanation — Hashing and Verification}
+
+\begin{itemize}
+  \item \texttt{hashFile(filePath)}: streams the file and computes its SHA-256 digest, returning the hex string. Streaming keeps memory usage low for large files.
+  \item \texttt{verifyHash(filePath, expectedHash)}: reads the whole file into memory and computes its SHA-256 value synchronously, then compares it to the expected hash and returns a boolean. For very large files you may prefer a streaming comparison (like \texttt{hashFile}) to avoid loading the entire file into memory.
+  \item \textbf{Usage notes:} Use \texttt{hashFile} to create the canonical fingerprint before encrypting (or after decrypting, as part of verification). Store the produced hex hash in the ledger metadata. During retrieval, after decrypting the reassembled file, call \texttt{verifyHash} (or re-run \texttt{hashFile} and compare) to confirm integrity.
+\end{itemize}
+
+\vspace{0.8em}
+
+\noindent\textbf{Integration notes and best practices}
+
+\begin{itemize}
+  \item Typical upload flow: \texttt{hashFile} → \texttt{encryptFile} (persist key/iv hex) → \texttt{chunkFile} (store returned \texttt{chunkCIDs}) → store metadata on-chain (hash, key hex, iv hex, chunkCIDs).
+  \item Typical retrieval flow: fetch metadata from ledger → \texttt{reconFile} (download chunks, reconstruct encrypted file) → \texttt{decryptFile} (with stored key/iv) → \texttt{verifyHash}.
+  \item Protect keys: keep AES keys and IVs confidential and consider wrapping them with an additional public-key envelope or a secrets manager for production deployments.
+  \item IPFS availability and pinning: the code pins chunks on add (\texttt{pin:true}), but ensure long-term availability by running your own IPFS pinning service or using a pinning provider.
+  \item Error handling: the listings are verbatim; consider adding higher-level retry/backoff and clearer error propagation in the calling code (API layer) to handle transient IPFS or I/O failures gracefully.
+\end{itemize}
+
+\noindent
+Together, these utility methods implement the low-level IO, cryptography, and storage primitives used by the LEDGIS processing pipelines. They are written to stream large files efficiently and to produce the canonical metadata (hashes, key/iv, and chunk CIDs) required for secure, auditable evidence management.
+
+\section{Core Services}
+
+\subsection{Overview}
+
+The LEDGIS system is built as a distributed application consisting of multiple independent services each focused on a single responsibility. Instead of relying on a monolithic backend, LEDGIS separates concerns across a coordinated set of components that together provide a secure, auditable, and scalable solution for managing digital evidence.
+
+Each service operates independently but communicates through well-defined APIs. The system comprises:
+\vspace{-0.5em}
+\begin{itemize}[leftmargin=1.5em]
+    \item A \textbf{backend server} that handles authentication, routing, cryptographic operations, and coordination between the blockchain and IPFS.
+    \item A \textbf{client interface} that serves as GUI to interact with LEDGIS.
+    \item The \textbf{IPFS network} which stores encrypted file chunks across distributed nodes.
+    \item The \textbf{Hyperledger Fabric network}, which acts as the blockchain backbone for the metadata.
+\end{itemize}
+\vspace{-0.5em}
+
+This modular architecture ensures that each service can be scaled, monitored, and updated independently, while still functioning cohesively within the system. Figure~\ref{fig:core-services-overview} provides a high-level view of how these services communicate with one another.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{fig/core_ser.png}
+    \caption{High-level overview of LEDGIS core services and their communication channels}
+    \label{fig:core-services-overview}
+\end{figure}
+
+\vspace{0.5em}
+
+\subsection{Backend Service}
+
+The backend server is the central coordination point for all major operations in LEDGIS. It is responsible for authentication, user management, evidence processing, communication with the blockchain, and interactions with IPFS. All critical workflows — such as the evidence upload and verification pipelines — are implemented as helper methods within the backend.
+
+\vspace{0.5em}
+
+\noindent\textbf{Authentication and Role-Based Access Control:}
+The backend uses \textbf{JWT (JSON Web Tokens)} for secure, stateless authentication. Every route in the application is protected using custom middleware functions that validate the JWT token provided in the `Authorization` header. This ensures that only authenticated and authorized users can access system endpoints.
+
+The system supports two user roles, `Admin` and `Regular`.  
+The `register` route, for example, is restricted exclusively to `Admin` users. Only an admin can register a new user, and this is enforced by verifying the JWT role claims in the middleware layer.
+
+During development, all routes were tested through \textbf{Postman}, where the authentication process could be observed directly. Figure~\ref{fig:auth-login} and Figure~\ref{fig:auth-register} show successful responses from login and register routes.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\linewidth]{fig/postman_login.png}
+    \caption{Postman testing of the login route showing JWT generation upon successful authentication}
+    \label{fig:auth-login}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\linewidth]{fig/postman_register.png}
+    \caption{Admin-only register route accessed via Postman using JWT in authorization header}
+    \label{fig:auth-register}
+\end{figure}
+
+\vspace{0.5em}
+
+\noindent\textbf{Protected Routes and Middlewares:}
+Each backend endpoint is shielded using role-based middlewares that verify a user’s identity and privileges before allowing further execution. Unauthorized users attempting to access sensitive endpoints receive descriptive error responses, maintaining transparency and clarity in API behavior.
+
+\vspace{0.5em}
+
+\noindent\textbf{Pipeline Execution:}
+The backend also defines the two major pipelines as modular helper functions:
+\vspace{-0.5em}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Evidence Upload Pipeline:} handles hashing, encryption, chunking, IPFS uploads, and blockchain metadata creation.
+    \item \textbf{Evidence Retrieval Pipeline:} fetches metadata from the ledger, retrieves chunks from IPFS, reassembles the file, decrypts it, and verifies its hash.
+\end{itemize}
+\vspace{-0.5em}
+These pipelines can be invoked through their respective API routes, ensuring complete automation of file integrity management within the backend.
+
+\vspace{0.5em}
+
+\noindent\textbf{Blockchain and IPFS Communication:}
+The backend interacts with the \textbf{Hyperledger Fabric network} via the Fabric Contract API, allowing it to submit and query transactions programmatically. For file storage, it uses the IPFS HTTP client to upload and retrieve encrypted file chunks from the distributed network.
+
+\vspace{1em}
+
+\subsection{Client Application}
+
+The client application provides the graphical interface for all user interactions. Built with modern web technologies, it serves as the bridge between users and the backend API. The client does not perform any heavy computation or cryptography; instead, it focuses entirely on providing a clean and responsive interface.
+
+A key security feature of the client is its \texttt{/check\_reg} route verification mechanism.  
+Whenever a user attempts to access a protected page (for instance, the evidence upload or dashboard view), the client automatically triggers a background API call to this route. The backend verifies the user’s JWT and returns the access status. If the token is invalid or expired, the client redirects the user to the login page.
+
+This small design detail prevents unauthorized users from accessing restricted components of the web application even through URL manipulation.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{fig/clientDash.png}
+    \caption{LEDGIS client interface showing evidence upload and verification sections}
+    \label{fig:client-dashboard}
+\end{figure}
+
+The client thus acts as a secure window into the distributed ecosystem, ensuring every action is validated and every data flow originates from an authenticated source.
+
+\vspace{1em}
+
+\subsection{IPFS Service}
+
+The InterPlanetary File System (IPFS) acts as LEDGIS’s distributed storage layer. It eliminates the need for centralized cloud storage and ensures that encrypted evidence files remain immutable and accessible through content addressing.
+\vspace{2em}
+When the backend uploads encrypted chunks, the IPFS daemon running on the server processes them and returns unique \textbf{Content Identifiers (CIDs)}. Each CID represents the SHA-256 hash of that chunk, meaning even a single byte change would alter its identifier completely.
+\vspace{2em}
+The backend maintains a connection to the IPFS API (available on port 5001), sending upload and retrieval requests through HTTP endpoints. During operation, the daemon logs events such as peer connections, file pinning, and CID generation.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\linewidth]{fig/ipfs_daemon.png}
+    \caption{IPFS daemon running locally showing peer discovery}
+    \label{fig:ipfs-daemon}
+\end{figure}
+
+This screenshot (Figure~\ref{fig:ipfs-daemon}) captures the IPFS daemon during active evidence uploads. The daemon continuously connects to other peers, forming a decentralized web of storage nodes. This ensures that evidence remains recoverable even if one node becomes unavailable due to its distributed nature.
+
+\vspace{1em}
+
+\subsection{Blockchain Network (Hyperledger Fabric)}
+
+The blockchain service, built on \textbf{Hyperledger Fabric}, is the backbone of LEDGIS’s integrity and auditability. It functions as the permanent ledger for storing all evidence metadata — including the original file hash, encryption key, IV, and list of CIDs.
+
+Unlike public blockchains, Fabric operates as a permissioned network. Only authenticated peers belonging to registered organizations can participate. This makes it ideal for a legal environment where privacy, traceability, and controlled access are critical.
+
+All communications with the blockchain network occur through the backend server using the \textbf{Fabric Contract API}. The backend acts as a gateway between the application layer and the blockchain layer, handling all transaction submissions, queries, and event notifications. When a new piece of evidence is uploaded, the backend constructs a transaction proposal that includes the file hash, encryption metadata, and list of IPFS CIDs. This proposal is then endorsed by peers from all participating organizations before being ordered and committed to the ledger as a new block.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{fig/fabric_docker.png}
+    \caption{Docker containers showing active Hyperledger Fabric peers, orderer, and CA services}
+    \label{fig:fabric-docker}
+\end{figure}
+
+The setup shown in Figure~\ref{fig:fabric-docker} includes:
+\vspace{-0.5em}
+\begin{itemize}[leftmargin=1.5em]
+    \item Two organizations (\texttt{Org1} and \texttt{Org2}) each hosting one peer node.
+    \item A single \texttt{Orderer} node responsible for block generation.
+    \item A \texttt{Fabric CA} for issuing digital certificates.
+\end{itemize}
+\vspace{-0.5em}
+
+Each peer container maintains its own copy of the ledger. When the backend submits a transaction via the Fabric Contract API, it is endorsed by both peers, ordered, and then committed to the blockchain.
+
+\vspace{1em}
+
+\noindent
+In summary, the LEDGIS core services collectively uphold the system’s guiding principles: security, transparency, and resilience. The backend manages logic and trust boundaries; the client provides a secure and user-friendly interface; IPFS guarantees distributed and immutable storage; and Hyperledger Fabric ensures tamper-proof record keeping. Together, they create a reliable digital infrastructure for storing, verifying, and retrieving legal evidence with confidence.
+
+\subsubsection{Chaincode Design}
+
+The chaincode, implemented in \texttt{Node.js} using the \textbf{fabric-contract-api}, defines two primary functions:  
+\texttt{storeEvidence} and \texttt{getEvidence}.  
+The former records encrypted evidence metadata into the blockchain ledger, while the latter retrieves stored records based on the evidence hash.  
+
+The code below represents the complete implementation used within the LEDGIS network.
+
+\begin{lstlisting}[style=ledgisjs,caption={EvidenceContract chaincode for storing and retrieving evidence metadata}]
+'use strict';
+const { Contract } = require('fabric-contract-api');
+class EvidenceContract extends Contract {
+    async initLedger(ctx) {
+        console.info('Chaincode instantiated');
+    }
+    async storeEvidence(ctx, evdString) {
+        const {hash} = JSON.parse(evdString);
+        await ctx.stub.putState(hash, Buffer.from(evdString));
+        return {success:true,hash:hash};
+    }
+    async getEvidence(ctx,evID){
+        const evBytes=await ctx.stub.getState(evID)
+        if(!evBytes)return {msg:"invalid key",status:failed}
+        return JSON.parse(evBytes.toString())
+    }
+}
+module.exports = EvidenceContract;
+\end{lstlisting}
+
+The \texttt{storeEvidence()} method receives evidence details as a serialized JSON string, extracts the file hash, and commits it to the ledger using the Fabric \texttt{putState()} API.  
+Each record is indexed by its hash, ensuring that evidence is uniquely identifiable and tamper-proof.  
+The \texttt{getEvidence()} method allows retrieval of any stored metadata using the same hash key.  
+Together, these methods provide a minimal yet effective on-chain storage mechanism for digital evidence metadata.
+
+\vspace{0.5em}
+
+\subsubsection{Backend Submission Controller}
+
+All communication with the blockchain occurs through the backend server, which acts as an intermediary between the client and the Hyperledger Fabric network.  
+This design isolates blockchain complexity from the frontend while enforcing authentication and authorization through the backend layer.  
+
+The \texttt{submissioncontroller.js} file defines an asynchronous helper function \texttt{subToFabric()}, which connects to the Fabric network, submits chaincode transactions, and returns the result to the API endpoint.
+
+\begin{lstlisting}[style=ledgisjs,caption={Backend submission controller for interacting with Hyperledger Fabric}]
+const { Gateway, Wallets } = require('fabric-network'); 
+const fs = require('fs');
+const path = require('path');
+const ccpPath = path.resolve(__dirname, '..','..', 'fabric-samples', 'test-network', 'organizations', 'peerOrganizations', 'org1.example.com', 'connection-org1.json');
+const walletPath = path.join(__dirname, '..','wallet');
+async function subToFabric(functionName, args) {
+  try {
+    const ccp = JSON.parse(fs.readFileSync(ccpPath, 'utf8'));
+    const wallet = await Wallets.newFileSystemWallet(walletPath);
+    const identity = await wallet.get('appUser');
+    if (!identity) {
+      return { error: 'No user identity' };
+    }
+    const gateway = new Gateway();
+    await gateway.connect(ccp, { 
+      wallet, 
+      identity: 'appUser', 
+      discovery: { enabled: true, asLocalhost: true } 
+    });
+    const network = await gateway.getNetwork('mychannel');
+    const contract = network.getContract('maincontract');
+    const result = await contract.submitTransaction(functionName, ...args);
+    await gateway.disconnect();
+    return { result: result.toString() };
+  } catch (error) {
+    console.error(`Failed to submit transaction: ${error}`);
+    return { error: error.message };
+  }
+}
+module.exports={subToFabric}
+\end{lstlisting}
+
+In this implementation, the backend server first loads the connection profile (saved in \texttt{connection-org1.json}) and retrieves the registered user identity (\texttt{appUser}) from the local wallet. The connection profile contains details about the network’s peers, orderers, and channels, while the wallet securely stores the user’s certificates and private keys issued by the Fabric CA. These credentials allow the backend to authenticate and sign transactions, ensuring every blockchain operation is traceable and verified.
+
+Once both configuration and identity are ready, a gateway connection is established to the \texttt{mychannel} network. The gateway simplifies peer discovery, endorsement, and transaction submission within Hyperledger Fabric. Through this connection, the backend accesses the deployed smart contract (\texttt{maincontract}) and invokes the required chaincode function using \texttt{submitTransaction(functionName, ...args)}. For example, during an evidence upload, it calls \texttt{storeEvidence} with the file hash and related metadata. The network endorses the transaction, commits it to the ledger, and returns the result, which the backend converts into a readable response.
+
+After execution, the gateway connection is cleanly closed to free resources and maintain efficient operation. This modular setup allows the backend to handle both evidence submission and retrieval securely through API calls. The client never interacts with the blockchain directly; instead, all operations pass through the backend, which manages authentication, validation, and communication with the ledger. This design keeps the client lightweight while ensuring that every blockchain transaction—from upload to verification—remains secure, auditable, and tamper-resistant within the LEDGIS ecosystem.
