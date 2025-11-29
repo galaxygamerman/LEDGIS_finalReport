@@ -1,116 +1,34 @@
-\newcommand{\insertIntoAppendix}[3]{
-    \chapter{#1}
-    % First page inline on the same page as the heading
-    \begin{figure}[htbp]
-        \centering
-        \includegraphics[page=#3,scale=0.65]{#2}
-    \end{figure}
-}
-
 \appendix
 
-\insertIntoAppendix
-{Paper Publication Details} % Title
-{Conference Management Toolkit - Camera Ready Submission Summary.pdf} % Filename
-{1} % Page to show
-
-\insertIntoAppendix
-{Copy of Paper Published} % Title
-{A Blockchain-Based Framework for Secure Management of Government and Law Enforcement Records.pdf} % Filename
-{1} % Page to show
-% Remaining pages as full-page inserts
-\includepdf[pages=2-,pagecommand={},scale=0.9,fitpaper=true]{A Blockchain-Based Framework for Secure Management of Government and Law Enforcement Records.pdf}
-
-\insertIntoAppendix
-{Plagiarism Report of Paper} % Title
-{ledgisPlagCheck.pdf}  % Filename
-{2} % Page to show
-% Remaining pages as full-page inserts
-\includepdf[pages=3-,pagecommand={},scale=0.9,fitpaper=true]{ledgisPlagCheck.pdf}
-
-\begin{comment}
-% --- Appendix D: Code Snippets ---
-\newpage
-\begin{center}
-\Large \textbf{APPENDIX - D : CODE SNIPPETS}
-\end{center}
-\addcontentsline{toc}{chapter}{APPENDIX - D : CODE SNIPPETS}
-\vspace{0.3cm}
-
-% --- Code Snippet 1 ---
+\chapter*{APPENDIX - A : Plagiarism Report Front Page (Project Report)}
+\addcontentsline{toc}{chapter}{APPENDIX - A : Plagiarism Report Front Page (Project Report)}
 \begin{figure}[htbp]
-\centering
-
-\includegraphics[width=1.0\textwidth ,height=0.5\textheight]{code_snipets/cs1.jpg}
-\caption{ This script evaluates the performance of the YOLO-CoAtNet model by comparing predictions against ground truth labels.}
-\label{fig:cs1}
+    \centering
+    \includegraphics[page=1,scale=0.63]{pdf/ledgisPlagCheck.pdf} % Filename
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[page=2,scale=0.7]{pdf/ledgisPlagCheck.pdf} % Filename
 \end{figure}
 
-% --- Code Snippet 2 ---
+\chapter*{APPENDIX - B : Paper Publication Details}
+\addcontentsline{toc}{chapter}{APPENDIX - C : Paper Publication Details}
 \begin{figure}[htbp]
-\centering
-\includegraphics[width=0.9\textwidth]{code_snipets/cs2.jpg}
-\caption{This script orchestrates training and evaluation of the custom YOLOv8 model with CoAtNet backbone.}
-\label{fig:cs2}
+    \centering
+    \includegraphics[page=1,scale=0.75]{pdf/ACCEPTANCE.pdf}
+   % \caption*{Figure B.1: Research Paper Acceptance email in IEEE COSMIC}
+\end{figure}
+\begin{figure}[htb] 
+    \centering
+    \includegraphics[width=0.9\linewidth]{pdf/Conference Management Toolkit - Camera Ready Submission Summary.pdf}
+    %\caption*{Figure B.2: IEEE COSMIC Conference Submission Summary}
 \end{figure}
 
-\newpage
-% --- Code Snippet 3 ---
+\chapter*{APPENDIX - C : Copy of Paper Published}
+\addcontentsline{toc}{chapter}{APPENDIX - C : Copy of Paper Published}
+\vspace{-1cm}
 \begin{figure}[htbp]
-\centering
-\includegraphics[width=0.9\textwidth]{code_snipets/cs3.jpg}
-\caption{Main inference pipeline for YOLOv8 with meta-confidence filtering. Detections with meta-confidence below 0.5 are discarded.}
-\label{fig:cs3}
+    \centering
+    \includegraphics[page=1,scale=0.67]{pdf/A Blockchain-Based Framework for Secure Management of Government and Law Enforcement Records.pdf}
+    %\caption*{Figure C.1: Accepted Research Paper Front Page}
 \end{figure}
-
-% --- Code Snippet 4 ---
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=1.0\textwidth, height=0.6\textheight]{code_snipets/cs4.jpg}
-\caption{Evaluation script comparing YOLO-CoAtNet predictions against ground truth labels.}
-\label{fig:cs4}
-\end{figure}
-
-\newpage
-% --- Code Snippet 5 ---
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=1.0\textwidth, height=0.6\textheight]{code_snipets/cs5.jpg}
-\caption{Converts Excel annotation spreadsheets to YOLO format for compatibility with training and evaluation.}
-\label{fig:cs5}
-\end{figure}
-
-% --- Code Snippet 6 ---
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.9\textwidth]{code_snipets/cs6.jpg}
-\caption{Moves 20\% of validation data to create a proper test set with corresponding labels for evaluation.}
-\label{fig:cs6}
-\end{figure}
-
-\newpage
-% --- Code Snippet 7 ---
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.9\textwidth]{code_snipets/cs7.jpg}
-\caption{Implements advanced training techniques and optimized hyperparameters to achieve 80–85\% model performance.}
-\label{fig:cs7}
-\end{figure}
-
-% --- Code Snippet 8 ---
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=1.0\textwidth, height=0.6\textheight]{code_snipets/cs8.jpg}
-\caption{Meta-confidence filtering for YOLOv8–CoAtNet. Dynamically adjusts thresholds using class-specific metrics to improve reliability.}
-\label{fig:cs8}
-\end{figure}
-
-\newpage
-% --- Code Snippet 9 ---
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=1.0\textwidth, height=0.6\textheight]{code_snipets/cs9.jpg}
-\caption{CoAtNet–YOLO enhanced training script. Trains on the optimized dataset to achieve $>$95\% accuracy, improving nasal class detection.}
-\label{fig:cs9}
-\end{figure}
-\end{comment}
