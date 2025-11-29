@@ -120,6 +120,65 @@ A clear difference in latency was observed between data ingestion and retrieval 
 
 This ten-second duration represents the deliberate cost of achieving immutability and trust through blockchain consensus. Attempting to store the entire file directly on-chain would lead to unmanageable block sizes, failed transaction propagation, and an unusable ledger. By isolating only the lightweight metadata—such as the hash, CIDs, and encryption key—on the blockchain, while storing the actual file data on IPFS, the system effectively separates time-intensive trust operations from fast local processing. This approach confirms that the hybrid architecture provides the right balance between scalability, integrity, and performance.
 
+\section{Societal Impact of the Project}
+
+The implementation of the LEDGIS framework extends beyond immediate technical utility, offering significant tangible benefits to the broader legal and governmental ecosystem. By transitioning from vulnerable centralized databases to a tamper-proof decentralized ledger, the project addresses several critical societal needs:
+
+\vspace{0.15in}
+\par
+\noindent \textbf{Restoration of Public Trust in Justice:} The platform directly addresses the erosion of confidence in public institutions caused by data manipulation and lack of transparency. By ensuring that legal records and evidence are immutable and mathematically verifiable, the system guarantees that judicial outcomes are based on authentic, unaltered facts, thereby strengthening the social contract between the state and its citizens.
+
+\vspace{0.15in}
+\par
+\noindent \textbf{Enhancement of Institutional Accountability:} The integration of immutable audit trails creates a culture of transparency where every interaction with sensitive data is logged and traceable. This verifiable history acts as a deterrent against corruption and unauthorized data tampering, ensuring that government officials and law enforcement agencies remain accountable for their handling of public records.
+
+\vspace{0.15in}
+\par
+\noindent \textbf{Acceleration of Legal Procedures:} The system addresses the societal issue of "justice delayed is justice denied" by reducing bureaucratic friction. By automating document verification and evidence chain-of-custody through smart contracts, the framework minimizes administrative delays and human errors, expediting legal workflows and helping to reduce the backlog of pending court cases.
+
+\vspace{0.15in}
+\par
+\noindent \textbf{Protection of Civil Liberties:} The shift to a permissioned blockchain architecture with robust encryption ensures that sensitive citizen data is protected against cyberattacks and unauthorized leaks. By enforcing strict role-based access control, the system protects the privacy rights of individuals involved in legal proceedings while ensuring that law enforcement has the necessary tools to uphold public safety.
+
+\section{SDG (Sustainable Development Goals) Mapped}
+The LEDGIS framework is designed to align with the United Nations Sustainable Development Goals (SDGs), focusing on strengthening institutions, fostering innovation, and ensuring social justice. Out of the 17 defined goals, our project specifically targets and contributes to the following areas through its decentralized architecture and security protocols:
+
+\begin{itemize}
+    \item \textbf{Goal 16: Peace, Justice, and Strong Institutions (Social/Governance Category):} 
+    This project offers a blockchain-based solution for the secure management and auditability of legal and law enforcement records. It directly contributes to Goal 16 by promoting the rule of law and ensuring equal access to justice. By utilizing Hyperledger Fabric to prevent data manipulation, the system fosters effective, accountable, and transparent institutions at all levels.
+    
+    \item \textbf{Goal 9: Industry, Innovation, and Infrastructure (Economic Category):}
+    The implementation of a hybrid on-chain and off-chain architecture (using IPFS and Hyperledger Fabric) contributes to Goal 9 by upgrading the technological infrastructure of government sectors. The project introduces a resilient, decentralized alternative to traditional, vulnerable centralized databases, thereby fostering innovation in public service delivery and enhancing digital security standards.
+    
+    \item \textbf{Goal 10: Reduced Inequalities (Social Category):}
+    By guaranteeing the integrity of digital evidence through cryptographic hashing and immutable logging, LEDGIS contributes to Goal 10. It helps eliminate systemic loopholes that allow for evidence tampering, ensuring that judicial outcomes are determined by authentic facts rather than external influence. This technological impartiality is crucial for reducing inequalities in the application of justice.
+\end{itemize}
+
+\begin{table}[h!]
+\centering
+\caption{Mapping Project Features to Relevant SDGs}
+\label{tab:sdg_mapping}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|p{4.5cm}|p{2.5cm}|p{6cm}|}
+\hline
+\textbf{Target SDG} & \textbf{Project Module} & \textbf{Contribution to Goal} \\
+\hline
+\textbf{SDG 16:} Peace, Justice \& Strong Institutions & Immutable Ledger & Ensures transparency and accountability by creating tamper-proof audit trails for all legal records. \\
+\hline
+\textbf{SDG 9:} Industry, Innovation \& Infrastructure & Hybrid Architecture & Modernizes government IT infrastructure with scalable, secure, and resilient blockchain technology. \\
+\hline
+\textbf{SDG 10:} Reduced Inequalities & Smart Contracts & Automates access control to ensure equal and unbiased application of evidence handling procedures. \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\linewidth]{fig/SDGs.png}
+    \caption{Sustainable Development Goals (SDGs)}
+    \label{fig:sdg_overview}
+\end{figure}
+
 \section{Discussions}
 
 This section interprets the findings of the project and discusses their broader implications, challenges, and identified limitations.
